@@ -1,0 +1,37 @@
+{
+  "id": "Mg-MOF-74",
+  "cif": "Mg-MOF-74.cif",
+  "p1": true,
+  "natoms_cif_rows": 54,
+  "elements": [
+    "C",
+    "H",
+    "Mg",
+    "O"
+  ],
+  "net_charge": 1.9999999997799556e-06,
+  "cell": [
+    6.7856,
+    15.11005579,
+    15.11005597,
+    117.80009324,
+    98.60912588,
+    98.60912599
+  ],
+  "perpendicular_widths": [
+    6.4944044383498865,
+    12.938249845904496,
+    12.938250003793337
+  ],
+  "unit_cells_for_12A": [
+    4,
+    2,
+    2
+  ],
+  "sha256_original": "0c80e2e605b14e0f5a1ab0de7a20cf264ea435a962acc0d96ba4c7b4555a459f",
+  "sha256_prepared": "b846974013d1eb5586abc2e27a9e6049f42273ed17cabe0ca69b8350aa7d06f7",
+  "format_changes": [
+    "removed 1 non-CIF line(s) before data_ block",
+    "added _atom_site_type_symbol column (element from label)"
+  ]
+}

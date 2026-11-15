@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Wrapper: run the gcmc-tools CLI in the `ads` conda env without installing the package.
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+exec conda run --no-capture-output -n ads env PYTHONPATH="$ROOT/src" python -m gcmctools.cli "$@"

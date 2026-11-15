@@ -1,0 +1,37 @@
+{
+  "id": "HKUST-1",
+  "cif": "HKUST-1.cif",
+  "p1": true,
+  "natoms_cif_rows": 156,
+  "elements": [
+    "C",
+    "Cu",
+    "H",
+    "O"
+  ],
+  "net_charge": -9.575673587391975e-16,
+  "cell": [
+    18.6273,
+    18.6273001,
+    18.6273,
+    60.00000017,
+    59.99999999,
+    60.0000012
+  ],
+  "perpendicular_widths": [
+    15.20912689218369,
+    15.20912700141965,
+    15.209126734328732
+  ],
+  "unit_cells_for_12A": [
+    2,
+    2,
+    2
+  ],
+  "sha256_original": "00d4fa2d9a36239860aadb91bd1d830eb680cdd1a10be35176815cd4a3c48480",
+  "sha256_prepared": "c30b1311cbbcaaeb4375bcf8b4bacd953adab518703accac8750c8e9b9f6f602",
+  "format_changes": [
+    "removed 1 non-CIF line(s) before data_ block",
+    "added _atom_site_type_symbol column (element from label)"
+  ]
+}

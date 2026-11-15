@@ -1,0 +1,37 @@
+{
+  "id": "IRMOF-1",
+  "cif": "IRMOF-1.cif",
+  "p1": true,
+  "natoms_cif_rows": 106,
+  "elements": [
+    "C",
+    "H",
+    "O",
+    "Zn"
+  ],
+  "net_charge": 1.0269562977782698e-15,
+  "cell": [
+    18.26599998,
+    18.26600037,
+    18.266,
+    60.00000067,
+    59.99999996,
+    60.00000068
+  ],
+  "perpendicular_widths": [
+    14.91412657785986,
+    14.914127002995615,
+    14.91412659268694
+  ],
+  "unit_cells_for_12A": [
+    2,
+    2,
+    2
+  ],
+  "sha256_original": "390bcb8bec28aa752dfb5765bb34f9003a4d054905cfaf74ddc3c8c60b8e6e7a",
+  "sha256_prepared": "4348ba6ea4119fa5a53ff76d3420d0c9542d6129965b2981b77d4726ede03575",
+  "format_changes": [
+    "removed 1 non-CIF line(s) before data_ block",
+    "added _atom_site_type_symbol column (element from label)"
+  ]
+}

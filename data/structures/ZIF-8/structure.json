@@ -1,0 +1,37 @@
+{
+  "id": "ZIF-8",
+  "cif": "ZIF-8.cif",
+  "p1": true,
+  "natoms_cif_rows": 276,
+  "elements": [
+    "C",
+    "H",
+    "N",
+    "Zn"
+  ],
+  "net_charge": 8.999999999717567e-06,
+  "cell": [
+    16.991,
+    16.991,
+    16.991,
+    90.0,
+    90.0,
+    90.0
+  ],
+  "perpendicular_widths": [
+    16.991,
+    16.991,
+    16.991
+  ],
+  "unit_cells_for_12A": [
+    2,
+    2,
+    2
+  ],
+  "sha256_original": "df74c0839512586a225668843c9e363bb24ed76eaabd1aa92db616cc63c54f7b",
+  "sha256_prepared": "6608f3746b0e2ca4bba5b6ccd91466e4469d8cd8182bd6609669fc3763c7301e",
+  "format_changes": [
+    "removed 1 non-CIF line(s) before data_ block",
+    "added _atom_site_type_symbol column (element from label)"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "MFI",
+  "cif": "MFI.cif",
+  "p1": false,
+  "natoms_cif_rows": 38,
+  "elements": [
+    "O",
+    "Si"
+  ],
+  "net_charge": -2.05,
+  "cell": [
+    20.022,
+    19.899,
+    13.383,
+    90.0,
+    90.0,
+    90.0
+  ],
+  "perpendicular_widths": [
+    20.022,
+    19.899,
+    13.383
+  ],
+  "unit_cells_for_12A": [
+    2,
+    2,
+    2
+  ],
+  "sha256_original": "1be57c99be89150670cde2b33f6e403f325090cb8f2a91aa498380a81c080f4b",
+  "sha256_prepared": "9122f0f6f60626a727b2182c2d0581299127c9ced735af79af3825c0602db80b",
+  "format_changes": []
+}

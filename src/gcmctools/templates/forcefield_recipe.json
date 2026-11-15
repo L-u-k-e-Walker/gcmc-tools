@@ -1,0 +1,30 @@
+{
+  "_comment": "One force-field recipe for all MOFs. See docs/FORCEFIELD.md. Framework LJ per element; framework charges come from the CIF (UseChargesFrom CIF_File). Adsorbate models copied from raspa3-src v3.0.29 examples/basic/12_mc_henry_coefficient_of_co2_n2_methane_in_mfi/force_field.json.",
+  "MixingRule": "Lorentz-Berthelot",
+  "TruncationMethod": "shifted",
+  "TailCorrections": false,
+  "CutOffVDW": 12.0,
+  "framework_elements": {
+    "H":  {"mass": 1.00794, "epsilon_K": 7.64893, "sigma_A": 2.84642, "source": "DREIDING (Mayo 1990); raspa3-src forcefield.cpp makeMetalOrganicFrameworkForceField; same as example 11 H1"},
+    "C":  {"mass": 12.0107, "epsilon_K": 47.8562, "sigma_A": 3.47299, "source": "DREIDING (Mayo 1990); raspa3-src forcefield.cpp; same as example 11 C1-C3"},
+    "N":  {"mass": 14.0067, "epsilon_K": 38.9492, "sigma_A": 3.26256, "source": "DREIDING (Mayo 1990); raspa3-src forcefield.cpp"},
+    "O":  {"mass": 15.9994, "epsilon_K": 48.1581, "sigma_A": 3.03315, "source": "DREIDING (Mayo 1990); raspa3-src forcefield.cpp; same as example 11 O1"},
+    "Mg": {"mass": 24.305,  "epsilon_K": 55.8574, "sigma_A": 2.69141, "source": "UFF (Rappe 1992); raspa3-src forcefield.cpp"},
+    "Cu": {"mass": 63.546,  "epsilon_K": 2.5161,  "sigma_A": 3.11369, "source": "UFF (Rappe 1992); raspa3-src forcefield.cpp; same as example 11 Cu1"},
+    "Zn": {"mass": 65.38,   "epsilon_K": 62.3992, "sigma_A": 2.46155, "source": "UFF (Rappe 1992) Zn3+2 D1=0.124 kcal/mol, x1=2.763 A; eps=D1*503.2195 K, sigma=x1/2^(1/6). raspa3-src built-in table value 27.677/4.04 is NOT UFF (docs/LOG.md 2026-11-15)"},
+    "Zr": {"mass": 91.224,  "epsilon_K": 34.7221, "sigma_A": 2.78317, "source": "UFF (Rappe 1992); raspa3-src forcefield.cpp"}
+  },
+  "adsorbate_pseudo_atoms": [
+    {"name": "C_co2", "element": "C", "mass": 12.0, "charge": 0.6512, "epsilon_K": 29.933, "sigma_A": 2.745, "source": "A. Garcia-Sanchez et al., J. Phys. Chem. C 2009, 113, 8814-8820"},
+    {"name": "O_co2", "element": "O", "mass": 15.9994, "charge": -0.3256, "epsilon_K": 85.671, "sigma_A": 3.017, "source": "A. Garcia-Sanchez et al., J. Phys. Chem. C 2009, 113, 8814-8820"},
+    {"name": "N_n2", "element": "N", "mass": 14.00674, "charge": -0.405, "epsilon_K": 38.298, "sigma_A": 3.306, "source": "A. Martin-Calvo et al., Phys. Chem. Chem. Phys. 2011, 13, 11165-11174"},
+    {"name": "N_com", "element": "N", "mass": 0.0, "charge": 0.810, "epsilon_K": null, "sigma_A": null, "print_to_output": false, "source": "A. Martin-Calvo et al., Phys. Chem. Chem. Phys. 2011, 13, 11165-11174 (massless charge site, no LJ)"},
+    {"name": "CH4", "element": "C", "mass": 16.04246, "charge": 0.0, "epsilon_K": 158.5, "sigma_A": 3.72, "source": "M. G. Martin et al., J. Chem. Phys. 2001, 114, 7174-7181 (TraPPE united atom)"},
+    {"name": "probe-He", "element": "He", "mass": 4.002602, "charge": 0.0, "epsilon_K": 10.9, "sigma_A": 2.64, "print_to_output": false, "source": "J.O. Hirschfelder et al., Molecular Theory of Gases and Liquids, 1954 (raspa3-src forcefield.cpp probe-He); used only for helium void fraction"}
+  ],
+  "gases": {
+    "CO2": {"component_name": "CO2", "molecule_file": "CO2.json", "molar_mass": 44.0095},
+    "N2":  {"component_name": "N2", "molecule_file": "N2.json", "molar_mass": 28.0134},
+    "CH4": {"component_name": "methane", "molecule_file": "methane.json", "molar_mass": 16.04246}
+  }
+}

@@ -48,6 +48,8 @@ simulation and experiment is NOT the goal. Never tune anything to make them agre
   the RASPA3 docs to find what is printed and under which settings.
 - Long runs: start them in a detached tmux session and poll; never block on them.
 - Safety: no sudo. Write only inside `~/projects/gcmc-tools`. Never delete outside it.
+  Only exception: keep `~/projects/CLAUDE.md` updated with this project's entry (user decision,
+  2026-11-15).
 - Git: this folder is its own repo. Work on feature branches, small commits, clear
   messages. Do not push until I say so. Remote will be
   `git@github.com:L-u-k-e-Walker/gcmc-tools.git` (private).

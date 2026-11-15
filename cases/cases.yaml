@@ -1,0 +1,84 @@
+# Example cases (MISSION.md section 6). Machine-readable; used by `gcmc isotherm --case` and
+# `gcmc isodb/compare --case`.
+
+defaults:
+  gases: [CO2, CH4, N2]
+  temperatures_K: {CO2: [298.0, 273.0], CH4: [298.0], N2: [298.0]}
+  pressures_bar: [0.01, 0.0215443, 0.0464159, 0.1, 0.215443, 0.464159, 1.0, 2.15443, 4.64159, 10.0]  # 10 log-spaced, 0.01-10 bar
+  cutoff_A: 12.0
+  isodb_T_window_K: 2.0
+
+cases:
+  MFI:
+    structure: data/structures/MFI/MFI.cif
+    framework_name: MFI
+    recipe: example10          # TraPPE-zeo framework model with charges from the force field
+    expected_framework_atoms: 288
+    aliases: [silicalite-1, silicalite, MFI, ZSM-5]
+    aliases_note: ZSM-5 records only if the record states all-silica
+    isodb_hashkeys:
+      - NIST-MATDB-b342ae78d659f61921dcf8ab7031c67a   # MFI
+      - NIST-MATDB-5d0728ebc1e0053aa120288307a704c8   # Silicalite MFI
+      - NIST-MATDB-62df1ce09c126da2a0753b6c5e4da27b   # Silicalite-1
+    isodb_hashkeys_conditional:
+      - NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82   # ZSM-5
+  IRMOF-1:
+    structure: data/structures/IRMOF-1/IRMOF-1.cif
+    framework_name: IRMOF-1
+    recipe: mof
+    aliases: [MOF-5, IRMOF-1, Zn4O(BDC)3]
+    isodb_hashkeys:
+      - NIST-MATDB-2c9380bddc59f547484ff729eab7d7cb   # IRMOF-1 (MOF-5)
+      - NIST-MATDB-e6c566b2365fa4837027d00c57215620   # Zn4O(BDC)3
+  HKUST-1:
+    structure: data/structures/HKUST-1/HKUST-1.cif
+    framework_name: HKUST-1
+    recipe: mof
+    aliases: [Cu-BTC, CuBTC, Cu3(BTC)2, MOF-199, Basolite C300, HKUST-1]
+    isodb_hashkeys:
+      - NIST-MATDB-991daf7313251e7e607e2bab2da57e33   # CuBTC
+    regression:                # Phase 1: raspa3-src example 11, old settings
+      structure_dir: data/structures/HKUST-1/example11
+      framework_name: Cu-BTC
+      expected_framework_atoms: 624
+      gas: CO2
+      T_K: 298.0
+      pressures_bar: [0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0]
+      cycles: 20000
+      init_cycles: 5000
+      print_every: 1000
+      unit_cells: [1, 1, 1]
+      targets_excess_mmol_g:   # MISSION.md Phase 1: value, stderr
+        0.01: [0.061, 0.003]
+        0.05: [0.291, 0.011]
+        0.1: [0.540, 0.004]
+        0.25: [1.162, 0.085]
+        0.5: [2.007, 0.084]
+        1.0: [3.330, 0.077]
+        2.0: [6.426, 0.158]
+        5.0: [12.228, 0.095]
+      ondisk_csv: ~/projects/cubtc_isotherm/isotherm.csv   # PR fugacity, void fraction 1.0
+  Mg-MOF-74:
+    structure: data/structures/Mg-MOF-74/Mg-MOF-74.cif
+    framework_name: Mg-MOF-74
+    recipe: mof
+    aliases: [CPO-27-Mg, Mg2(dobdc), Mg/DOBDC, Mg-MOF-74]
+    isodb_hashkeys:
+      - NIST-MATDB-f5e80ffaaaf05f4ed655664fd22defb9   # Mg-MOF-74
+      - NIST-MATDB-f4b549a56c1a5caf008c436b7d0aaaea   # Mg2(dobdc)
+  UiO-66:
+    structure: data/structures/UiO-66/UiO-66.cif
+    framework_name: UiO-66
+    recipe: mof
+    charges_note: ML-predicted DDEC6 (PACMAN), unlike the DFT-DDEC charges of the other MOFs
+    aliases: [UiO-66, UiO-66(Zr)]
+    isodb_hashkeys:
+      - NIST-MATDB-5ab0dbe0639729711750ef4b97715f0f   # UiO-66
+      - NIST-MATDB-27ce47f74d79f611f6d3f9caa686697b   # UiO-66(Zr)
+  ZIF-8:
+    structure: data/structures/ZIF-8/ZIF-8.cif
+    framework_name: ZIF-8
+    recipe: mof
+    aliases: [ZIF-8, MAF-4, Basolite Z1200]
+    isodb_hashkeys:
+      - NIST-MATDB-b2dc02871a66ac38e4b195796cf3e00b   # ZIF-8

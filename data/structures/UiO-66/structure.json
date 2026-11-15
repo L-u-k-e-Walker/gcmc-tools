@@ -1,0 +1,34 @@
+{
+  "id": "UiO-66",
+  "cif": "UiO-66.cif",
+  "p1": true,
+  "natoms_cif_rows": 114,
+  "elements": [
+    "C",
+    "H",
+    "O",
+    "Zr"
+  ],
+  "net_charge": -2.100000312532657e-09,
+  "cell": [
+    14.8174,
+    14.8174,
+    14.8174,
+    60.0,
+    60.0,
+    60.0
+  ],
+  "perpendicular_widths": [
+    12.098356438238486,
+    12.098356438238486,
+    12.098356438238486
+  ],
+  "unit_cells_for_12A": [
+    2,
+    2,
+    2
+  ],
+  "sha256_original": "1bbd0bd30e12be0a83c11927e5694a7e8983a5a039bbc489d92a107dbe65f70d",
+  "sha256_prepared": "1bbd0bd30e12be0a83c11927e5694a7e8983a5a039bbc489d92a107dbe65f70d",
+  "format_changes": []
+}

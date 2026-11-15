@@ -17,6 +17,16 @@ or live responses from ISODB, GitHub and Zenodo. Hypotheses are labeled as such.
 
 ## 2. Discrepancies with MISSION.md that need your decision
 
+**Gate 0 decisions (user, 2026-11-15):**
+- D1: run the regression at φ = 1.0 and compare against both the MISSION targets and the on-disk PR numbers.
+- D2/D3: UiO-66 comes from CoRE MOF 2019/2024 (experimental geometry, ML-predicted PACMAN DDEC6
+  charges). This is a different charge method from the other MOFs and must be stated wherever UiO-66
+  results appear.
+- D4: my call (see LOG.md for the choice and its reasoning).
+- D5: `~/projects/CLAUDE.md` is kept updated. It is the only write outside the project (noted in MISSION §2).
+- FF recipe approved (§7 "Open choices").
+- `kg/mol`: the safe option, i.e. reject as an ambiguous unit string, counted in the ledger.
+
 **D1. The old HKUST-1 runs on disk did not use ideal gas.** `cubtc_isotherm/run_isotherm.py`
 *removes* `FugacityCoefficient` (comment: "Real-gas correction … Peng-Robinson"). The run folders
 print φ = 0.99945 … 0.842, and README/commit message say so too. The only old setting that matches
