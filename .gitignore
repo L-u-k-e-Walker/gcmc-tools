@@ -1,0 +1,5 @@
+runs/
+data/isodb_raw/isodb-library/
+__pycache__/
+*.pyc
+.pytest_cache/
