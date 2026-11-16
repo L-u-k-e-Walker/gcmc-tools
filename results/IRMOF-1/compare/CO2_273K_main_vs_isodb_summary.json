@@ -1,0 +1,41 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/IRMOF-1/CO2_273K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 3,
+    "exp_n_dois": 2,
+    "exp_median_mmol_g_bar": 52.53589997577343,
+    "exp_q25": 28.069796674595032,
+    "exp_q75": 97.88691731900474,
+    "exp_values": {
+      "10.1016j.cej.2009.10.067.isotherm1": 3.603693373416631,
+      "10.1016j.ijhydene.2011.11.023.isotherm7": 143.23793466223603,
+      "10.1016j.ijhydene.2011.11.023.isotherm8": 52.53589997577343
+    },
+    "sim_widom_mmol_g_bar": 1.396474,
+    "sim_widom_err": 0.025592700000000003,
+    "sim_fit_lowP_mmol_g_bar": 1.3423908550814918,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.026581328208786264
+  },
+  "outliers": {
+    "10.1016j.cej.2009.10.067.isotherm1": false,
+    "10.1016j.ijhydene.2011.11.023.isotherm7": true,
+    "10.1016j.ijhydene.2011.11.023.isotherm8": false,
+    "10.1021Cg070640e.isotherm2f": false
+  },
+  "outlier_scores_log10": {
+    "10.1016j.cej.2009.10.067.isotherm1": -0.00159353968475056,
+    "10.1016j.ijhydene.2011.11.023.isotherm7": 0.4593951298765523,
+    "10.1016j.ijhydene.2011.11.023.isotherm8": -0.021664326411173915,
+    "10.1021Cg070640e.isotherm2f": -0.025482991377497786
+  },
+  "outlier_fences_log10": [
+    -0.22702792319024995,
+    0.3180625582430702
+  ],
+  "n_pristine_isotherms": 4,
+  "n_pristine_dois": 3,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

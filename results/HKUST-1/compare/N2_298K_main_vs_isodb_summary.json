@@ -1,0 +1,69 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/HKUST-1/N2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 5,
+    "exp_n_dois": 4,
+    "exp_median_mmol_g_bar": 0.7608264742104562,
+    "exp_q25": 0.318055900893551,
+    "exp_q75": 1.0500551043657034,
+    "exp_values": {
+      "10.1002aic.15837.Isotherm6": 0.7608264742104562,
+      "10.1007s10973-013-3497-1.Isotherm5": 1.0500551043657034,
+      "10.1021cm5042293.Isotherm13": 0.318055900893551,
+      "10.1021cm5042293.Isotherm33": 0.29850803963352496,
+      "10.1021la800803w.Isotherm26": 149.45926456527886
+    },
+    "sim_widom_mmol_g_bar": 0.3793428,
+    "sim_widom_err": 0.0045159549999999994,
+    "sim_fit_lowP_mmol_g_bar": 0.34607692468210044,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.49859306012407234
+  },
+  "outliers": {
+    "10.1002aic.15837.Isotherm6": false,
+    "10.1007s10450-013-9527-2.isotherm20": false,
+    "10.1007s10450-013-9527-2.isotherm24": true,
+    "10.1007s10450-014-9639-3.Isotherm4": false,
+    "10.1007s1045001395272.Isotherm52": false,
+    "10.1007s10450019001243.Isotherm7": false,
+    "10.1007s1093401500604.Isotherm4": false,
+    "10.1007s10973-013-3497-1.Isotherm5": false,
+    "10.1016S2095-4956(14)60171-6.Isotherm8": false,
+    "10.1016S2095-4956(14)60173-X.Isotherm9": true,
+    "10.1016j.egypro.2009.01.166.Isotherm4": false,
+    "10.1021Ef800938e.isotherm21": false,
+    "10.1021Ef800938e.isotherm8": false,
+    "10.1021Ic500722n.Isotherm57": false,
+    "10.1021cm5042293.Isotherm13": false,
+    "10.1021cm5042293.Isotherm33": false,
+    "10.1021la800803w.Isotherm26": true
+  },
+  "outlier_scores_log10": {
+    "10.1002aic.15837.Isotherm6": 0.052478441092919464,
+    "10.1007s10450-013-9527-2.isotherm20": -0.0027358862127784805,
+    "10.1007s10450-013-9527-2.isotherm24": -0.5768691639630013,
+    "10.1007s10450-014-9639-3.Isotherm4": 0.016654963280681175,
+    "10.1007s1045001395272.Isotherm52": -0.3783573603829991,
+    "10.1007s10450019001243.Isotherm7": 0.03974331039651596,
+    "10.1007s1093401500604.Isotherm4": 0.12337374415119988,
+    "10.1007s10973-013-3497-1.Isotherm5": 0.0,
+    "10.1016S2095-4956(14)60171-6.Isotherm8": 0.06331202889278846,
+    "10.1016S2095-4956(14)60173-X.Isotherm9": -0.5951324593764864,
+    "10.1016j.egypro.2009.01.166.Isotherm4": -0.07526174199230391,
+    "10.1021Ef800938e.isotherm21": -0.04082779555316483,
+    "10.1021Ef800938e.isotherm8": 0.01951190401998855,
+    "10.1021Ic500722n.Isotherm57": 0.1908098715954,
+    "10.1021cm5042293.Isotherm13": -0.19753648139527233,
+    "10.1021cm5042293.Isotherm33": -0.12188894083893248,
+    "10.1021la800803w.Isotherm26": 1.8882747540681317
+  },
+  "outlier_fences_log10": [
+    -0.3834400137367104,
+    0.31402951399069734
+  ],
+  "n_pristine_isotherms": 17,
+  "n_pristine_dois": 13,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

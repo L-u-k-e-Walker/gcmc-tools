@@ -1,0 +1,59 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/ZIF-8/CO2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 3,
+    "exp_n_dois": 2,
+    "exp_median_mmol_g_bar": 2.611241388905492,
+    "exp_q25": 1.6227948104363308,
+    "exp_q75": 2.8885772582116482,
+    "exp_values": {
+      "10.1016j.memsci.2011.09.040.Isotherm1": 0.6343482319671696,
+      "10.1039C4ee01009d.Isotherm21": 2.611241388905492,
+      "10.1039C4ee01009d.Isotherm22": 3.1659131275178045
+    },
+    "sim_widom_mmol_g_bar": 0.7607443,
+    "sim_widom_err": 0.004909269,
+    "sim_fit_lowP_mmol_g_bar": 0.747319688045737,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.29133434512497053
+  },
+  "outliers": {
+    "10.1016j.cej.2011.01.096.isotherm4b": false,
+    "10.1016j.memsci.2011.09.040.Isotherm1": false,
+    "10.1021acs.jced.1c00900.Isotherm8": false,
+    "10.1039C0ee00700e.Isotherm19": false,
+    "10.1039C4ee01009d.Isotherm15": false,
+    "10.1039C4ee01009d.Isotherm16": false,
+    "10.1039C4ee01009d.Isotherm17": false,
+    "10.1039C4ee01009d.Isotherm18": false,
+    "10.1039C4ee01009d.Isotherm19": false,
+    "10.1039C4ee01009d.Isotherm20": false,
+    "10.1039C4ee01009d.Isotherm21": false,
+    "10.1039C4ee01009d.Isotherm22": false
+  },
+  "outlier_scores_log10": {
+    "10.1016j.cej.2011.01.096.isotherm4b": 0.0,
+    "10.1016j.memsci.2011.09.040.Isotherm1": -0.14010132818489576,
+    "10.1021acs.jced.1c00900.Isotherm8": 0.0003203077440772234,
+    "10.1039C0ee00700e.Isotherm19": -0.0019067796379086141,
+    "10.1039C4ee01009d.Isotherm15": -0.05113416699662145,
+    "10.1039C4ee01009d.Isotherm16": -0.03315479803537039,
+    "10.1039C4ee01009d.Isotherm17": 0.07561654369356863,
+    "10.1039C4ee01009d.Isotherm18": 0.16558034425820733,
+    "10.1039C4ee01009d.Isotherm19": 0.20915359557315677,
+    "10.1039C4ee01009d.Isotherm20": 0.45103581921527586,
+    "10.1039C4ee01009d.Isotherm21": 0.3712891457165205,
+    "10.1039C4ee01009d.Isotherm22": 0.41810231953768723
+  },
+  "outlier_fences_log10": [
+    -0.3988281852566817,
+    0.6387968841284053
+  ],
+  "n_pristine_isotherms": 12,
+  "n_pristine_dois": 5,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {
+    "10.1039/C4ee01009d": "pairing ambiguous (6 isotherms at 273 K, 8 at 298 K)"
+  },
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

@@ -1,0 +1,39 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/UiO-66/N2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 3,
+    "exp_n_dois": 3,
+    "exp_median_mmol_g_bar": 0.25613060766103857,
+    "exp_q25": 0.23808461308305606,
+    "exp_q75": 1.5380239683630275,
+    "exp_values": {
+      "10.1002chem.201503078.Isotherm38": 0.25613060766103857,
+      "10.1016j.jiec.2014.12.021.Isotherm7": 2.8199173290650164,
+      "10.1021acs.inorgchem.5b00435.Isotherm33": 0.22003861850507353
+    },
+    "sim_widom_mmol_g_bar": 0.3390193,
+    "sim_widom_err": 0.05029247,
+    "sim_fit_lowP_mmol_g_bar": 0.3011563697532072,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 1.3236188485862486
+  },
+  "outliers": {
+    "10.1002chem.201503078.Isotherm38": false,
+    "10.1016j.jiec.2014.12.021.Isotherm7": false,
+    "10.1021acs.inorgchem.5b00435.Isotherm33": false
+  },
+  "outlier_scores_log10": {
+    "10.1002chem.201503078.Isotherm38": 0.0,
+    "10.1016j.jiec.2014.12.021.Isotherm7": 1.0412206951087613,
+    "10.1021acs.inorgchem.5b00435.Isotherm33": -0.09287066043669809
+  },
+  "outlier_fences_log10": [
+    NaN,
+    NaN
+  ],
+  "n_pristine_isotherms": 3,
+  "n_pristine_dois": 3,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

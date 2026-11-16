@@ -1,0 +1,38 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/Mg-MOF-74/N2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 2,
+    "exp_n_dois": 2,
+    "exp_median_mmol_g_bar": 0.9322577081131217,
+    "exp_q25": 0.9278415003401528,
+    "exp_q75": 0.9366739158860906,
+    "exp_values": {
+      "10.1016j.ijggc.2013.01.009.Isotherm13": 0.923425292567184,
+      "10.1016j.micromeso.2014.02.028.Isotherm7": 0.9410901236590594
+    },
+    "sim_widom_mmol_g_bar": 0.355554,
+    "sim_widom_err": 0.003896176,
+    "sim_fit_lowP_mmol_g_bar": 0.32311841479656384,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.38139024961202733
+  },
+  "outliers": {
+    "10.1016j.ijggc.2013.01.009.Isotherm13": false,
+    "10.1016j.micromeso.2014.02.028.Isotherm7": false,
+    "10.1039C3ee42394h.Isotherm6": false
+  },
+  "outlier_scores_log10": {
+    "10.1016j.ijggc.2013.01.009.Isotherm13": -0.026348369527912703,
+    "10.1016j.micromeso.2014.02.028.Isotherm7": 0.0,
+    "10.1039C3ee42394h.Isotherm6": 0.12587711050035774
+  },
+  "outlier_fences_log10": [
+    NaN,
+    NaN
+  ],
+  "n_pristine_isotherms": 3,
+  "n_pristine_dois": 3,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

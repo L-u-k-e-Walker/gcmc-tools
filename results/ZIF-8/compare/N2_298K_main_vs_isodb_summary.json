@@ -1,0 +1,44 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/ZIF-8/N2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 2,
+    "exp_n_dois": 2,
+    "exp_median_mmol_g_bar": 94.6162489099983,
+    "exp_q25": 47.39984965414626,
+    "exp_q75": 141.83264816585037,
+    "exp_values": {
+      "10.1016j.memsci.2011.09.040.Isotherm3": 0.18345039829419588,
+      "10.1021Am5028346.Isotherm2": 189.04904742170243
+    },
+    "sim_widom_mmol_g_bar": 0.15237910000000002,
+    "sim_widom_err": 0.0007475425000000001,
+    "sim_fit_lowP_mmol_g_bar": 0.1315070094782352,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.0016104961014143289
+  },
+  "outliers": {
+    "10.1016j.cej.2011.01.096.isotherm4c": false,
+    "10.1016j.memsci.2011.09.040.Isotherm3": false,
+    "10.1016j.seppur.2019.115850.Isotherm6": false,
+    "10.1021Am5028346.Isotherm2": true,
+    "10.1021acs.jced.1c00900.Isotherm11": false,
+    "10.1039C4ee01009d.Isotherm23": false
+  },
+  "outlier_scores_log10": {
+    "10.1016j.cej.2011.01.096.isotherm4c": 0.22050086253848772,
+    "10.1016j.memsci.2011.09.040.Isotherm3": -0.29877209853715686,
+    "10.1016j.seppur.2019.115850.Isotherm6": -0.2528045664001952,
+    "10.1021Am5028346.Isotherm2": 2.3873595325007035,
+    "10.1021acs.jced.1c00900.Isotherm11": 0.0,
+    "10.1039C4ee01009d.Isotherm23": 0.0
+  },
+  "outlier_fences_log10": [
+    -0.7220720323561647,
+    0.6978442544598842
+  ],
+  "n_pristine_isotherms": 6,
+  "n_pristine_dois": 6,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

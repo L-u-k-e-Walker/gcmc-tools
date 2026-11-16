@@ -1,0 +1,34 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/HKUST-1/CO2_273K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 0,
+    "exp_n_dois": 0,
+    "exp_median_mmol_g_bar": null,
+    "exp_q25": null,
+    "exp_q75": null,
+    "exp_values": {},
+    "sim_widom_mmol_g_bar": 16.11943,
+    "sim_widom_err": 0.3831422,
+    "sim_fit_lowP_mmol_g_bar": 12.859396417286574,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm"
+  },
+  "outliers": {
+    "10.1007s10973-013-3497-1.Isotherm2": false,
+    "10.1016j.micromeso.2012.05.021.Isotherm5": false,
+    "10.1016j.micromeso.2012.05.021.Isotherm6": false
+  },
+  "outlier_scores_log10": {
+    "10.1007s10973-013-3497-1.Isotherm2": 0.0,
+    "10.1016j.micromeso.2012.05.021.Isotherm5": 0.1300237794834538,
+    "10.1016j.micromeso.2012.05.021.Isotherm6": -0.08164697348780449
+  },
+  "outlier_fences_log10": [
+    NaN,
+    NaN
+  ],
+  "n_pristine_isotherms": 3,
+  "n_pristine_dois": 2,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

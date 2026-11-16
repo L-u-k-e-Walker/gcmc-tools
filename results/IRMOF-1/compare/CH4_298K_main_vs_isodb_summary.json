@@ -1,0 +1,49 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/IRMOF-1/CH4_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 1,
+    "exp_n_dois": 1,
+    "exp_median_mmol_g_bar": 3.987081638961466,
+    "exp_q25": 3.987081638961466,
+    "exp_q75": 3.987081638961466,
+    "exp_values": {
+      "10.1002anie.200502553.Isotherm2": 3.987081638961466
+    },
+    "sim_widom_mmol_g_bar": 0.3874726,
+    "sim_widom_err": 0.001077682,
+    "sim_fit_lowP_mmol_g_bar": 0.3383649151001838,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.09718200806666373
+  },
+  "outliers": {
+    "10.1002anie.200502553.Isotherm2": true,
+    "10.1007s1093401500604.Isotherm22": false,
+    "10.1016S2095-4956(14)60171-6.Isotherm4": false,
+    "10.1016j.fluid.2014.08.020.Isotherm1": true,
+    "10.1016j.fluid.2014.08.020.Isotherm2": true,
+    "10.1016j.seppur.2018.01.013.Isotherm13": false,
+    "10.1021am506793b.Isotherm1": false,
+    "10.1021jp809539w.Isotherm59": false,
+    "10.1039c3sc52633j.Isotherm13": false
+  },
+  "outlier_scores_log10": {
+    "10.1002anie.200502553.Isotherm2": 0.15820431884893965,
+    "10.1007s1093401500604.Isotherm22": 0.01792543057214453,
+    "10.1016S2095-4956(14)60171-6.Isotherm4": 0.0,
+    "10.1016j.fluid.2014.08.020.Isotherm1": -0.3550981619330178,
+    "10.1016j.fluid.2014.08.020.Isotherm2": -0.256826419093062,
+    "10.1016j.seppur.2018.01.013.Isotherm13": -0.04400344165293478,
+    "10.1021am506793b.Isotherm1": 0.04610016069355019,
+    "10.1021jp809539w.Isotherm59": -0.012626343331417138,
+    "10.1039c3sc52633j.Isotherm13": -0.06101148013558505
+  },
+  "outlier_fences_log10": [
+    -0.17941684619717943,
+    0.1363307966337389
+  ],
+  "n_pristine_isotherms": 10,
+  "n_pristine_dois": 9,
+  "n_flagged_isotherms": 0,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}

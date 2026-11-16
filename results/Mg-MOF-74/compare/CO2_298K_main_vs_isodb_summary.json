@@ -1,0 +1,50 @@
+{
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/Mg-MOF-74/CO2_298K_main.csv",
+  "henry": {
+    "exp_n_isotherms": 6,
+    "exp_n_dois": 3,
+    "exp_median_mmol_g_bar": 55.63787371256167,
+    "exp_q25": 53.151447083001436,
+    "exp_q75": 72.08193490893031,
+    "exp_values": {
+      "10.1016j.ijggc.2013.01.009.Isotherm3": 89.25861324269832,
+      "10.1039C3ee42394h.Isotherm1": 77.08327366602249,
+      "10.1039c5dt03137k.Isotherm1": 52.80265318151204,
+      "10.1039c5dt03137k.Isotherm10": 57.07791863765373,
+      "10.1039c5dt03137k.Isotherm17": 6.231344787215539,
+      "10.1039c5dt03137k.Isotherm9": 54.19782878746962
+    },
+    "sim_widom_mmol_g_bar": 9.530056,
+    "sim_widom_err": 0.1294804,
+    "sim_fit_lowP_mmol_g_bar": 9.756194997409072,
+    "exp_method": "slope through origin of points with P <= 0.1 bar, >= 3 points, per isotherm",
+    "sim_over_exp_median": 0.17128720715019607
+  },
+  "outliers": {
+    "10.1016j.ijggc.2013.01.009.Isotherm3": false,
+    "10.1039C0ee00700e.Isotherm17": false,
+    "10.1039C3ee42394h.Isotherm1": false,
+    "10.1039c5dt03137k.Isotherm1": false,
+    "10.1039c5dt03137k.Isotherm10": false,
+    "10.1039c5dt03137k.Isotherm17": true,
+    "10.1039c5dt03137k.Isotherm9": false
+  },
+  "outlier_scores_log10": {
+    "10.1016j.ijggc.2013.01.009.Isotherm3": 0.1286982136259473,
+    "10.1039C0ee00700e.Isotherm17": 0.0063206287325466275,
+    "10.1039C3ee42394h.Isotherm1": 0.0,
+    "10.1039c5dt03137k.Isotherm1": -0.10500467475888968,
+    "10.1039c5dt03137k.Isotherm10": -0.11931095269090412,
+    "10.1039c5dt03137k.Isotherm17": -0.676481969078178,
+    "10.1039c5dt03137k.Isotherm9": -0.11383760095407336
+  },
+  "outlier_fences_log10": [
+    -0.2961761636056318,
+    0.1827622011494164
+  ],
+  "n_pristine_isotherms": 8,
+  "n_pristine_dois": 5,
+  "n_flagged_isotherms": 1,
+  "qst_exp_skipped_papers": {},
+  "basis_note": "experimental 'unknown' basis treated as excess for the headline comparison"
+}
