@@ -1,0 +1,482 @@
+[
+  {
+    "case": "MFI",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2304,
+    "abs_mmol_g": 2.789549,
+    "molecules_box": 128.72304,
+    "cpu_s": 112.86255,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.0752417,
+    "problems": [],
+    "framework_atoms_reported": 288,
+    "run_dir": "runs/_calibration/MFI/CO2_298K/gcmc/gcmc_1e+06Pa_4f983eebaf"
+  },
+  {
+    "case": "MFI",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2304,
+    "abs_mmol_g": 3.070079,
+    "molecules_box": 141.668,
+    "cpu_s": 123.05073,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.08203382000000001,
+    "problems": [],
+    "framework_atoms_reported": 288,
+    "run_dir": "runs/_calibration/MFI/CO2_273K/gcmc/gcmc_1e+06Pa_91b058d97c"
+  },
+  {
+    "case": "MFI",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2304,
+    "abs_mmol_g": 1.906111,
+    "molecules_box": 87.95704,
+    "cpu_s": 21.868986,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.014579324,
+    "problems": [],
+    "framework_atoms_reported": 288,
+    "run_dir": "runs/_calibration/MFI/CH4_298K/gcmc/gcmc_1e+06Pa_a3e8678244"
+  },
+  {
+    "case": "MFI",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2304,
+    "abs_mmol_g": 0.9035049,
+    "molecules_box": 41.692,
+    "cpu_s": 38.124408,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.025416272,
+    "problems": [],
+    "framework_atoms_reported": 288,
+    "run_dir": "runs/_calibration/MFI/N2_298K/gcmc/gcmc_1e+06Pa_1b989fb1e9"
+  },
+  {
+    "case": "IRMOF-1",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 848,
+    "abs_mmol_g": 12.57689,
+    "molecules_box": 154.92,
+    "cpu_s": 141.169063,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.09411270866666667,
+    "problems": [],
+    "framework_atoms_reported": 106,
+    "run_dir": "runs/_calibration/IRMOF-1/CO2_298K/gcmc/gcmc_1e+06Pa_850643f791"
+  },
+  {
+    "case": "IRMOF-1",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 848,
+    "abs_mmol_g": 24.92022,
+    "molecules_box": 306.96304,
+    "cpu_s": 336.235075,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.22415671666666667,
+    "problems": [],
+    "framework_atoms_reported": 106,
+    "run_dir": "runs/_calibration/IRMOF-1/CO2_273K/gcmc/gcmc_1e+06Pa_6cc1a134c2"
+  },
+  {
+    "case": "IRMOF-1",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 848,
+    "abs_mmol_g": 3.671264,
+    "molecules_box": 45.222,
+    "cpu_s": 8.969669,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.005979779333333333,
+    "problems": [],
+    "framework_atoms_reported": 106,
+    "run_dir": "runs/_calibration/IRMOF-1/CH4_298K/gcmc/gcmc_1e+06Pa_9cfb81559a"
+  },
+  {
+    "case": "IRMOF-1",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 848,
+    "abs_mmol_g": 1.87395,
+    "molecules_box": 23.083,
+    "cpu_s": 13.772139,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.009181426,
+    "problems": [],
+    "framework_atoms_reported": 106,
+    "run_dir": "runs/_calibration/IRMOF-1/N2_298K/gcmc/gcmc_1e+06Pa_1ae4d3a661"
+  },
+  {
+    "case": "HKUST-1",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 1248,
+    "abs_mmol_g": 13.23748,
+    "molecules_box": 256.22304,
+    "cpu_s": 336.518392,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.22434559466666668,
+    "problems": [],
+    "framework_atoms_reported": 156,
+    "run_dir": "runs/_calibration/HKUST-1/CO2_298K/gcmc/gcmc_1e+06Pa_42195f9a24"
+  },
+  {
+    "case": "HKUST-1",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 1248,
+    "abs_mmol_g": 16.54454,
+    "molecules_box": 320.234,
+    "cpu_s": 400.650875,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.2671005833333333,
+    "problems": [],
+    "framework_atoms_reported": 156,
+    "run_dir": "runs/_calibration/HKUST-1/CO2_273K/gcmc/gcmc_1e+06Pa_4c4be3f9a5"
+  },
+  {
+    "case": "HKUST-1",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 1248,
+    "abs_mmol_g": 4.867618,
+    "molecules_box": 94.21696,
+    "cpu_s": 33.167161,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.022111440666666666,
+    "problems": [],
+    "framework_atoms_reported": 156,
+    "run_dir": "runs/_calibration/HKUST-1/CH4_298K/gcmc/gcmc_1e+06Pa_55d6cdab6b"
+  },
+  {
+    "case": "HKUST-1",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 1248,
+    "abs_mmol_g": 2.308292,
+    "molecules_box": 44.679,
+    "cpu_s": 48.115326,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.032076884,
+    "problems": [],
+    "framework_atoms_reported": 156,
+    "run_dir": "runs/_calibration/HKUST-1/N2_298K/gcmc/gcmc_1e+06Pa_0baa6ea39e"
+  },
+  {
+    "case": "Mg-MOF-74",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      4,
+      2,
+      2
+    ],
+    "framework_atoms_box": 864,
+    "abs_mmol_g": 14.45496,
+    "molecules_box": 168.4,
+    "cpu_s": 149.718495,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.09981232999999999,
+    "problems": [],
+    "framework_atoms_reported": 54,
+    "run_dir": "runs/_calibration/Mg-MOF-74/CO2_298K/gcmc/gcmc_1e+06Pa_f72b1599a8"
+  },
+  {
+    "case": "Mg-MOF-74",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      4,
+      2,
+      2
+    ],
+    "framework_atoms_box": 864,
+    "abs_mmol_g": 15.60964,
+    "molecules_box": 181.852,
+    "cpu_s": 156.866936,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.10457795733333335,
+    "problems": [],
+    "framework_atoms_reported": 54,
+    "run_dir": "runs/_calibration/Mg-MOF-74/CO2_273K/gcmc/gcmc_1e+06Pa_b16859c185"
+  },
+  {
+    "case": "Mg-MOF-74",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      4,
+      2,
+      2
+    ],
+    "framework_atoms_box": 864,
+    "abs_mmol_g": 6.642244,
+    "molecules_box": 77.382,
+    "cpu_s": 18.670584,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.012447056000000001,
+    "problems": [],
+    "framework_atoms_reported": 54,
+    "run_dir": "runs/_calibration/Mg-MOF-74/CH4_298K/gcmc/gcmc_1e+06Pa_ac1b1d1cd3"
+  },
+  {
+    "case": "Mg-MOF-74",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      4,
+      2,
+      2
+    ],
+    "framework_atoms_box": 864,
+    "abs_mmol_g": 2.71846,
+    "molecules_box": 31.67,
+    "cpu_s": 25.766666,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.017177777333333335,
+    "problems": [],
+    "framework_atoms_reported": 54,
+    "run_dir": "runs/_calibration/Mg-MOF-74/N2_298K/gcmc/gcmc_1e+06Pa_be9673b1f8"
+  },
+  {
+    "case": "UiO-66",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 912,
+    "abs_mmol_g": 6.041396,
+    "molecules_box": 80.426,
+    "cpu_s": 66.557019,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.044371346,
+    "problems": [],
+    "framework_atoms_reported": 114,
+    "run_dir": "runs/_calibration/UiO-66/CO2_298K/gcmc/gcmc_1e+06Pa_732e7e82ab"
+  },
+  {
+    "case": "UiO-66",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 912,
+    "abs_mmol_g": 7.329736,
+    "molecules_box": 97.57696,
+    "cpu_s": 78.639413,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.052426275333333335,
+    "problems": [],
+    "framework_atoms_reported": 114,
+    "run_dir": "runs/_calibration/UiO-66/CO2_273K/gcmc/gcmc_1e+06Pa_3ebd603b12"
+  },
+  {
+    "case": "UiO-66",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 912,
+    "abs_mmol_g": 3.23283,
+    "molecules_box": 43.037,
+    "cpu_s": 10.960206,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.007306803999999999,
+    "problems": [],
+    "framework_atoms_reported": 114,
+    "run_dir": "runs/_calibration/UiO-66/CH4_298K/gcmc/gcmc_1e+06Pa_107856cee1"
+  },
+  {
+    "case": "UiO-66",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 912,
+    "abs_mmol_g": 1.683983,
+    "molecules_box": 22.418,
+    "cpu_s": 19.081592,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.012721061333333334,
+    "problems": [],
+    "framework_atoms_reported": 114,
+    "run_dir": "runs/_calibration/UiO-66/N2_298K/gcmc/gcmc_1e+06Pa_b848790c62"
+  },
+  {
+    "case": "ZIF-8",
+    "gas": "CO2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2208,
+    "abs_mmol_g": 6.462063,
+    "molecules_box": 141.176,
+    "cpu_s": 224.213377,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.14947558466666666,
+    "problems": [],
+    "framework_atoms_reported": 276,
+    "run_dir": "runs/_calibration/ZIF-8/CO2_298K/gcmc/gcmc_1e+06Pa_2fcc68349b"
+  },
+  {
+    "case": "ZIF-8",
+    "gas": "CO2",
+    "T_K": 273.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2208,
+    "abs_mmol_g": 8.955919,
+    "molecules_box": 195.65896,
+    "cpu_s": 288.734972,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.19248998133333337,
+    "problems": [],
+    "framework_atoms_reported": 276,
+    "run_dir": "runs/_calibration/ZIF-8/CO2_273K/gcmc/gcmc_1e+06Pa_0e6844c7d1"
+  },
+  {
+    "case": "ZIF-8",
+    "gas": "CH4",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2208,
+    "abs_mmol_g": 3.158939,
+    "molecules_box": 69.013,
+    "cpu_s": 34.77184,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.023181226666666666,
+    "problems": [],
+    "framework_atoms_reported": 276,
+    "run_dir": "runs/_calibration/ZIF-8/CH4_298K/gcmc/gcmc_1e+06Pa_0f6cbac84c"
+  },
+  {
+    "case": "ZIF-8",
+    "gas": "N2",
+    "T_K": 298.0,
+    "P_bar": 10.0,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "framework_atoms_box": 2208,
+    "abs_mmol_g": 1.325543,
+    "molecules_box": 28.959,
+    "cpu_s": 48.773236,
+    "cycles": 1500,
+    "cpu_s_per_cycle": 0.03251549066666667,
+    "problems": [],
+    "framework_atoms_reported": 276,
+    "run_dir": "runs/_calibration/ZIF-8/N2_298K/gcmc/gcmc_1e+06Pa_206b0583c7"
+  }
+]

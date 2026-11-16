@@ -1,0 +1,139 @@
+{
+  "case": "IRMOF-1",
+  "gas": "CO2",
+  "T_K": 298.0,
+  "label": "pilot",
+  "options": {
+    "cycles": 20000,
+    "init_cycles": 5000,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "void_fraction": 0.80361,
+    "ideal_gas": false,
+    "coulomb_cutoff": 12.0,
+    "print_every": null,
+    "void_fraction_detail": {
+      "mean": 0.8036145,
+      "half_range": 1.4500000000028379e-05,
+      "values": [
+        0.8036,
+        0.803629
+      ]
+    }
+  },
+  "henry_widom_mmol_g_bar": 0.813938,
+  "henry_widom_err_mmol_g_bar": 0.008344068,
+  "dH0_nvt1_kj_mol": -14.60302327449812,
+  "dH0_nvt1_err_kj_mol": 0.6054779585282768,
+  "fits_excess": {
+    "Henry": {
+      "model": "Henry",
+      "ok": true,
+      "n_points": 3,
+      "p_max_bar": 0.0464159,
+      "params": {
+        "K_mmol_g_bar": 0.7540165305822658
+      },
+      "stderr": {
+        "K_mmol_g_bar": 0.011315501509136914
+      },
+      "residuals_mmol_g": [
+        -1.7250305822658768e-05,
+        0.00013051166017649315,
+        -7.440588185338853e-05
+      ],
+      "chi2_reduced": 0.038410422634766656,
+      "aic": -8.994674624634213
+    },
+    "Langmuir": {
+      "model": "Langmuir",
+      "ok": true,
+      "n_points": 10,
+      "p_max_bar": 10.0,
+      "params": {
+        "n_m_mmol_g": 6340706.380512226,
+        "K_1_bar": 1.3155708738491752e-07
+      },
+      "stderr": {
+        "n_m_mmol_g": 1.5990319574935357e-23,
+        "K_1_bar": 7.706911471498313e-10
+      },
+      "residuals_mmol_g": [
+        -0.0008187336228574812,
+        -0.0015962280152489045,
+        -0.003794562645877575,
+        -0.0048331152409121225,
+        -0.016284675568184998,
+        -0.03342920518021869,
+        -0.05138315364286561,
+        -0.1044482972515739,
+        0.1854510760522321,
+        3.4844323401840356
+      ],
+      "chi2_reduced": 98.01816015990018,
+      "aic": 47.62009217943084
+    },
+    "DSLangmuir": {
+      "model": "DSLangmuir",
+      "ok": false,
+      "error": "Optimal parameters not found: The maximum number of function evaluations is exceeded."
+    }
+  },
+  "fits_absolute": {
+    "Henry": {
+      "model": "Henry",
+      "ok": true,
+      "n_points": 3,
+      "p_max_bar": 0.0464159,
+      "params": {
+        "K_mmol_g_bar": 0.8086933116266547
+      },
+      "stderr": {
+        "K_mmol_g_bar": 0.011315501575159571
+      },
+      "residuals_mmol_g": [
+        -1.7329116266548428e-05,
+        0.00013041868632186412,
+        -7.426788313164012e-05
+      ],
+      "chi2_reduced": 0.03835691282057286,
+      "aic": -8.998856858331076
+    },
+    "Langmuir": {
+      "model": "Langmuir",
+      "ok": true,
+      "n_points": 10,
+      "p_max_bar": 10.0,
+      "params": {
+        "n_m_mmol_g": 6648440.202737439,
+        "K_1_bar": 1.3419191866563542e-07
+      },
+      "stderr": {
+        "n_m_mmol_g": 1.521475749229504e-23,
+        "K_1_bar": 7.538037105888918e-10
+      },
+      "residuals_mmol_g": [
+        -0.0008520654574186732,
+        -0.0016679622993700897,
+        -0.003948771534497304,
+        -0.005163733496692399,
+        -0.016989517992437086,
+        -0.034912992131051035,
+        -0.05441772721750482,
+        -0.11022267979813338,
+        0.17666740008027126,
+        3.4836925027525414
+      ],
+      "chi2_reduced": 98.79873510060152,
+      "aic": 47.699412507321675
+    },
+    "DSLangmuir": {
+      "model": "DSLangmuir",
+      "ok": false,
+      "error": "Optimal parameters not found: The maximum number of function evaluations is exceeded."
+    }
+  }
+}

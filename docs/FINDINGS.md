@@ -52,3 +52,19 @@ results/HKUST-1/compare/CO2_298K_regression_corrected_vs_isodb_*. They use the c
 - F2.6 Clausius–Clapeyron: only one paper has one isotherm at each of 273 and 298 K, and it is the
   suspicious bio-oil record (Qst 46 → 20 kJ/mol over 0.25–3.25 mmol/g). Experimental heats for
   HKUST-1 CO2 cannot be judged from this ISODB set. The simulated ΔH₀ is 25.4 kJ/mol (F1.3).
+
+## Phase 3 (IRMOF-1 CO2 298 K, project recipe: DDEC charges, UFF/DREIDING)
+Numbers from results/IRMOF-1/CO2_298K_pilot*.csv/json and results/IRMOF-1/compare/CO2_298K_pilot_vs_isodb_*.
+- F3.1 Simulated vs experimental consensus (30 pristine isotherms, 8 papers; 2 outliers): sim/exp median
+  0.36 (< 0.1 bar), 0.70 (0.1–1 bar), 1.00 (> 1 bar); inside the IQR at 0%, 18%, 60% of grid points.
+  Without outliers: 0.36, 0.61, 1.00. MEASURED: the simulation is below experiment at low pressure
+  in a MOF without open metal sites, and agrees above 1 bar. Below ~0.05 bar the consensus rests on
+  1–2 papers. Not yet interpreted (Phase 5).
+- F3.2 The simulated Henry coefficient (Widom) is 0.814 ± 0.008 mmol/g/bar vs 0.61 from the only experimental
+  isotherm with >= 3 points below 0.1 bar (ratio 1.34). This is the opposite direction from F3.1's low-pressure ratio,
+  so the low-pressure experimental data disagree among themselves; the experimental side is too thin to resolve it.
+- F3.3 Simulated ΔH0 = −14.6 ± 0.6 kJ/mol (1-molecule NVT), consistent with the fluctuation value at
+  0.01 bar (−14.4). No paper has exactly one isotherm at each of 273 and 298 K, so no experimental
+  Clausius–Clapeyron value.
+- F3.4 The simulated isotherm is convex up to 10 bar (0.78 → 11.8 mmol/g from 1 to 10 bar). Langmuir and
+  dual-site Langmuir cannot represent it; only the Henry fit is usable.

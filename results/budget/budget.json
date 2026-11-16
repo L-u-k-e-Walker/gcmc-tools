@@ -1,0 +1,674 @@
+{
+  "20k+5k (as Phase 1/pilot)": {
+    "total_cpu_h": 53.24178455605595,
+    "longest_point_h": 3.7097303240740738,
+    "wall_h_8_jobs": 6.655223069506993,
+    "wall_h_12_jobs": 4.436815379671328,
+    "rows": [
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 128.72304,
+        "cpu_10bar_point_s": 1881.0424999999998,
+        "cpu_isotherm_s": 7583.497806603772,
+        "longest_point_s": 3762.0849999999996
+      },
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 141.668,
+        "cpu_10bar_point_s": 2050.8455000000004,
+        "cpu_isotherm_s": 8177.808306603775,
+        "longest_point_s": 4101.691000000001
+      },
+      {
+        "case": "MFI",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 87.95704,
+        "cpu_10bar_point_s": 364.4831,
+        "cpu_isotherm_s": 2495.7008454586153,
+        "longest_point_s": 364.4831
+      },
+      {
+        "case": "MFI",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 41.692,
+        "cpu_10bar_point_s": 635.4067999999999,
+        "cpu_isotherm_s": 5223.219376617205,
+        "longest_point_s": 635.4067999999999
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 154.92,
+        "cpu_10bar_point_s": 2352.817716666667,
+        "cpu_isotherm_s": 8602.862008333334,
+        "longest_point_s": 4705.635433333334
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 306.96304,
+        "cpu_10bar_point_s": 5603.917916666667,
+        "cpu_isotherm_s": 19981.712708333336,
+        "longest_point_s": 11207.835833333334
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 45.222,
+        "cpu_10bar_point_s": 149.49448333333333,
+        "cpu_isotherm_s": 1302.7628286082286,
+        "longest_point_s": 149.49448333333333
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 23.083,
+        "cpu_10bar_point_s": 229.53564999999998,
+        "cpu_isotherm_s": 2892.302972368735,
+        "longest_point_s": 229.53564999999998
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 256.22304,
+        "cpu_10bar_point_s": 5608.639866666667,
+        "cpu_isotherm_s": 20171.82443899371,
+        "longest_point_s": 11217.279733333335
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 320.234,
+        "cpu_10bar_point_s": 6677.514583333333,
+        "cpu_isotherm_s": 23912.88594732704,
+        "longest_point_s": 13355.029166666665
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 94.21696,
+        "cpu_10bar_point_s": 552.7860166666667,
+        "cpu_isotherm_s": 2728.91359951731,
+        "longest_point_s": 552.7860166666667
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 44.679,
+        "cpu_10bar_point_s": 801.9221,
+        "cpu_isotherm_s": 5598.966513685429,
+        "longest_point_s": 801.9221
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 168.4,
+        "cpu_10bar_point_s": 2495.3082499999996,
+        "cpu_isotherm_s": 9108.522271226415,
+        "longest_point_s": 4990.616499999999
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 181.852,
+        "cpu_10bar_point_s": 2614.4489333333336,
+        "cpu_isotherm_s": 9525.514662893083,
+        "longest_point_s": 5228.897866666667
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 77.382,
+        "cpu_10bar_point_s": 311.17640000000006,
+        "cpu_isotherm_s": 1748.7184768563516,
+        "longest_point_s": 311.17640000000006
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 31.67,
+        "cpu_10bar_point_s": 429.4444333333334,
+        "cpu_isotherm_s": 3962.7434910980082,
+        "longest_point_s": 429.4444333333334
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 80.426,
+        "cpu_10bar_point_s": 1109.28365,
+        "cpu_isotherm_s": 4278.2663599056605,
+        "longest_point_s": 2218.5673
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 97.57696,
+        "cpu_10bar_point_s": 1310.6568833333333,
+        "cpu_isotherm_s": 4983.072676572327,
+        "longest_point_s": 2621.3137666666667
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 43.037,
+        "cpu_10bar_point_s": 182.6701,
+        "cpu_isotherm_s": 1579.1213755770593,
+        "longest_point_s": 182.6701
+      },
+      {
+        "case": "UiO-66",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 22.418,
+        "cpu_10bar_point_s": 318.0265333333333,
+        "cpu_isotherm_s": 3985.2047799423867,
+        "longest_point_s": 318.0265333333333
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 141.176,
+        "cpu_10bar_point_s": 3736.8896166666664,
+        "cpu_isotherm_s": 14037.302337578614,
+        "longest_point_s": 7473.779233333333
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 195.65896,
+        "cpu_10bar_point_s": 4812.2495333333345,
+        "cpu_isotherm_s": 17801.062045911953,
+        "longest_point_s": 9624.499066666669
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 69.013,
+        "cpu_10bar_point_s": 579.5306666666667,
+        "cpu_isotherm_s": 3698.3275905219366,
+        "longest_point_s": 579.5306666666667
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 28.959,
+        "cpu_10bar_point_s": 812.8872666666667,
+        "cpu_isotherm_s": 8290.110981267106,
+        "longest_point_s": 812.8872666666667
+      }
+    ]
+  },
+  "10k+5k": {
+    "total_cpu_h": 31.540810775562285,
+    "longest_point_h": 2.225838194444444,
+    "wall_h_8_jobs": 3.9426013469452856,
+    "wall_h_12_jobs": 2.6284008979635236,
+    "rows": [
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 128.72304,
+        "cpu_10bar_point_s": 1128.6254999999999,
+        "cpu_isotherm_s": 4450.113778301886,
+        "longest_point_s": 2257.2509999999997
+      },
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 141.668,
+        "cpu_10bar_point_s": 1230.5073000000002,
+        "cpu_isotherm_s": 4806.700078301887,
+        "longest_point_s": 2461.0146000000004
+      },
+      {
+        "case": "MFI",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 87.95704,
+        "cpu_10bar_point_s": 218.68985999999998,
+        "cpu_isotherm_s": 1397.4356016147917,
+        "longest_point_s": 218.68985999999998
+      },
+      {
+        "case": "MFI",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 41.692,
+        "cpu_10bar_point_s": 381.24407999999994,
+        "cpu_isotherm_s": 3033.9467203099457,
+        "longest_point_s": 381.24407999999994
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 154.92,
+        "cpu_10bar_point_s": 1411.6906300000003,
+        "cpu_isotherm_s": 5124.917205000001,
+        "longest_point_s": 2823.3812600000006
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 306.96304,
+        "cpu_10bar_point_s": 3362.35075,
+        "cpu_isotherm_s": 11952.227625,
+        "longest_point_s": 6724.7015
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 45.222,
+        "cpu_10bar_point_s": 89.69669,
+        "cpu_isotherm_s": 744.8576971649372,
+        "longest_point_s": 89.69669
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 23.083,
+        "cpu_10bar_point_s": 137.72138999999999,
+        "cpu_isotherm_s": 1698.5817834212407,
+        "longest_point_s": 137.72138999999999
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 256.22304,
+        "cpu_10bar_point_s": 3365.18392,
+        "cpu_isotherm_s": 12048.936172830186,
+        "longest_point_s": 6730.36784
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 320.234,
+        "cpu_10bar_point_s": 4006.5087499999995,
+        "cpu_isotherm_s": 14293.573077830186,
+        "longest_point_s": 8013.017499999999
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 94.21696,
+        "cpu_10bar_point_s": 331.67161,
+        "cpu_isotherm_s": 1583.1896691443485,
+        "longest_point_s": 331.67161
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 44.679,
+        "cpu_10bar_point_s": 481.15326,
+        "cpu_isotherm_s": 3305.2214176452194,
+        "longest_point_s": 481.15326
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 168.4,
+        "cpu_10bar_point_s": 1497.1849499999996,
+        "cpu_isotherm_s": 5427.619023113206,
+        "longest_point_s": 2994.3698999999992
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 181.852,
+        "cpu_10bar_point_s": 1568.66936,
+        "cpu_isotherm_s": 5677.814458113207,
+        "longest_point_s": 3137.33872
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 77.382,
+        "cpu_10bar_point_s": 186.70584000000002,
+        "cpu_isotherm_s": 1011.7367464911695,
+        "longest_point_s": 186.70584000000002
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 31.67,
+        "cpu_10bar_point_s": 257.66666000000004,
+        "cpu_isotherm_s": 2340.1517550361627,
+        "longest_point_s": 257.66666000000004
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 80.426,
+        "cpu_10bar_point_s": 665.57019,
+        "cpu_isotherm_s": 2527.3824574528303,
+        "longest_point_s": 1331.14038
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 97.57696,
+        "cpu_10bar_point_s": 786.39413,
+        "cpu_isotherm_s": 2950.26624745283,
+        "longest_point_s": 1572.78826
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 43.037,
+        "cpu_10bar_point_s": 109.60206,
+        "cpu_isotherm_s": 907.8954668556696,
+        "longest_point_s": 109.60206
+      },
+      {
+        "case": "UiO-66",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 22.418,
+        "cpu_10bar_point_s": 190.81591999999998,
+        "cpu_isotherm_s": 2351.5455094748663,
+        "longest_point_s": 190.81591999999998
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 141.176,
+        "cpu_10bar_point_s": 2242.13377,
+        "cpu_isotherm_s": 8326.56253462264,
+        "longest_point_s": 4484.26754
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 195.65896,
+        "cpu_10bar_point_s": 2887.3497200000006,
+        "cpu_isotherm_s": 10584.818359622643,
+        "longest_point_s": 5774.699440000001
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 69.013,
+        "cpu_10bar_point_s": 347.7184,
+        "cpu_isotherm_s": 2123.1776863886334,
+        "longest_point_s": 347.7184
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 28.959,
+        "cpu_10bar_point_s": 487.73236,
+        "cpu_isotherm_s": 4878.247720835736,
+        "longest_point_s": 487.73236
+      }
+    ]
+  },
+  "40k+10k": {
+    "total_cpu_h": 106.4835691121119,
+    "longest_point_h": 7.4194606481481475,
+    "wall_h_8_jobs": 13.310446139013987,
+    "wall_h_12_jobs": 8.873630759342657,
+    "rows": [
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 128.72304,
+        "cpu_10bar_point_s": 3762.0849999999996,
+        "cpu_isotherm_s": 15166.995613207544,
+        "longest_point_s": 7524.169999999999
+      },
+      {
+        "case": "MFI",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 141.668,
+        "cpu_10bar_point_s": 4101.691000000001,
+        "cpu_isotherm_s": 16355.61661320755,
+        "longest_point_s": 8203.382000000001
+      },
+      {
+        "case": "MFI",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 87.95704,
+        "cpu_10bar_point_s": 728.9662,
+        "cpu_isotherm_s": 4991.401690917231,
+        "longest_point_s": 728.9662
+      },
+      {
+        "case": "MFI",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 41.692,
+        "cpu_10bar_point_s": 1270.8135999999997,
+        "cpu_isotherm_s": 10446.43875323441,
+        "longest_point_s": 1270.8135999999997
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 154.92,
+        "cpu_10bar_point_s": 4705.635433333334,
+        "cpu_isotherm_s": 17205.724016666667,
+        "longest_point_s": 9411.270866666668
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 306.96304,
+        "cpu_10bar_point_s": 11207.835833333334,
+        "cpu_isotherm_s": 39963.42541666667,
+        "longest_point_s": 22415.67166666667
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 45.222,
+        "cpu_10bar_point_s": 298.98896666666667,
+        "cpu_isotherm_s": 2605.525657216457,
+        "longest_point_s": 298.98896666666667
+      },
+      {
+        "case": "IRMOF-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 23.083,
+        "cpu_10bar_point_s": 459.07129999999995,
+        "cpu_isotherm_s": 5784.60594473747,
+        "longest_point_s": 459.07129999999995
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 256.22304,
+        "cpu_10bar_point_s": 11217.279733333335,
+        "cpu_isotherm_s": 40343.64887798742,
+        "longest_point_s": 22434.55946666667
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 320.234,
+        "cpu_10bar_point_s": 13355.029166666665,
+        "cpu_isotherm_s": 47825.77189465408,
+        "longest_point_s": 26710.05833333333
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 94.21696,
+        "cpu_10bar_point_s": 1105.5720333333334,
+        "cpu_isotherm_s": 5457.82719903462,
+        "longest_point_s": 1105.5720333333334
+      },
+      {
+        "case": "HKUST-1",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 44.679,
+        "cpu_10bar_point_s": 1603.8442,
+        "cpu_isotherm_s": 11197.933027370858,
+        "longest_point_s": 1603.8442
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 168.4,
+        "cpu_10bar_point_s": 4990.616499999999,
+        "cpu_isotherm_s": 18217.04454245283,
+        "longest_point_s": 9981.232999999998
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 181.852,
+        "cpu_10bar_point_s": 5228.897866666667,
+        "cpu_isotherm_s": 19051.029325786167,
+        "longest_point_s": 10457.795733333334
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 77.382,
+        "cpu_10bar_point_s": 622.3528000000001,
+        "cpu_isotherm_s": 3497.436953712703,
+        "longest_point_s": 622.3528000000001
+      },
+      {
+        "case": "Mg-MOF-74",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 31.67,
+        "cpu_10bar_point_s": 858.8888666666668,
+        "cpu_isotherm_s": 7925.4869821960165,
+        "longest_point_s": 858.8888666666668
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 80.426,
+        "cpu_10bar_point_s": 2218.5673,
+        "cpu_isotherm_s": 8556.532719811321,
+        "longest_point_s": 4437.1346
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 97.57696,
+        "cpu_10bar_point_s": 2621.3137666666667,
+        "cpu_isotherm_s": 9966.145353144653,
+        "longest_point_s": 5242.627533333333
+      },
+      {
+        "case": "UiO-66",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 43.037,
+        "cpu_10bar_point_s": 365.3402,
+        "cpu_isotherm_s": 3158.2427511541187,
+        "longest_point_s": 365.3402
+      },
+      {
+        "case": "UiO-66",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 22.418,
+        "cpu_10bar_point_s": 636.0530666666666,
+        "cpu_isotherm_s": 7970.409559884773,
+        "longest_point_s": 636.0530666666666
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 298.0,
+        "N_box_10bar": 141.176,
+        "cpu_10bar_point_s": 7473.779233333333,
+        "cpu_isotherm_s": 28074.60467515723,
+        "longest_point_s": 14947.558466666665
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CO2",
+        "T_K": 273.0,
+        "N_box_10bar": 195.65896,
+        "cpu_10bar_point_s": 9624.499066666669,
+        "cpu_isotherm_s": 35602.124091823905,
+        "longest_point_s": 19248.998133333338
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "CH4",
+        "T_K": 298.0,
+        "N_box_10bar": 69.013,
+        "cpu_10bar_point_s": 1159.0613333333333,
+        "cpu_isotherm_s": 7396.655181043873,
+        "longest_point_s": 1159.0613333333333
+      },
+      {
+        "case": "ZIF-8",
+        "gas": "N2",
+        "T_K": 298.0,
+        "N_box_10bar": 28.959,
+        "cpu_10bar_point_s": 1625.7745333333335,
+        "cpu_isotherm_s": 16580.22196253421,
+        "longest_point_s": 1625.7745333333335
+      }
+    ]
+  }
+}

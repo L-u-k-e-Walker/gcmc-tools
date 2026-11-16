@@ -94,3 +94,25 @@ Open:
   budget measure because they do not depend on other load (e.g. gaming). `--dry-run` added. 82 tests.
 - Pilot ready to launch (not started): IRMOF-1 CO2 298 K, 10 points 0.01–10 bar, 2×2×2 primitive
   (848 atoms), 20k + 5k cycles, auto-extension on, Widom + NVT1. Waiting for the user's go-ahead.
+
+## 2026-11-15: Phase 3, IRMOF-1 CO2 pilot and budget
+Did:
+- User gave the go-ahead (games done). Pilot: `bin/gcmc isotherm --case IRMOF-1 --gas CO2 --T 298 --label pilot`
+  (20:36–21:17, 41 min wall on 8 jobs). Void fraction 0.80361 ± 0.00001. 2×2×2 primitive (848 atoms).
+  Auto-extension re-ran 3 points (0.0215 bar ×3 for rel. error 7.5%; 1 and 2.15 bar ×2 for drift,
+  3.3σ and 2.4σ). After extension: no drift flags, all rel. errors ≤ 4.1%.
+- Cost: CPU per 25k-cycle point 66 s (0.01 bar) to 1939 s (10 bar). Isotherm total 4844 s GCMC + 368 s
+  Widom/NVT1. Peak memory 75–76 MB per job. Wall ≈ CPU for every job (machine otherwise idle).
+- Calibration (scripts/calibrate_cost.py): one 500+1000-cycle run at 10 bar for all 24 case/gas/T.
+  All passed validation (MFI expands to 288 atoms as set in cases.yaml). results/budget/calibration.json.
+  IRMOF-1 calibration predicts 2350 s for the 10-bar point vs 1939 s measured (20% high, conservative).
+- Budget (scripts/budget.py → results/budget/budget.json): 20k+5k cycles: 53 CPU h, wall ~6.7 h at 8 jobs;
+  longest single point (HKUST-1 CO2 273 K, 10 bar, if extended ×2) 3.7 h. 10k+5k: 31.5 CPU h (~3.9 h).
+  40k+10k: 106 CPU h (~13 h).
+Observations:
+- Low-loading points (CH4/N2 at ≤ 0.1 bar, < 1 molecule in the box) cannot reach 5% relative error in
+  any affordable run; under the current rule they all go to ×4. That is not in the 53 h (adds ~15 CPU h).
+- Langmuir and DSL cannot fit the IRMOF-1 CO2 isotherm (convex, with an inflection toward 10 bar);
+  the DSL fit fails to converge. Henry fit OK.
+- Running isotherms one after another wastes cores (each waits for its 10-bar point). Phase 4 needs a
+  single shared pool over all points, longest first.
