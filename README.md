@@ -6,7 +6,32 @@ isotherms of common MOFs and zeolites differ from experiment. `docs/MISSION.md` 
 `docs/RECON.md`, `docs/FORCEFIELD.md`, `docs/LOG.md` and `docs/FINDINGS.md` record what was
 checked and found.
 
-Status: Tool 1 done (Phase 1). Tool 2 done for HKUST-1 CO2 (Phase 2).
+Status: all phases done. Full matrix (6 materials × CO2/CH4/N2 at 298 K + CO2 at 273 K) simulated and
+compared with NIST ISODB; the report is [`reports/REPORT.md`](reports/REPORT.md).
+
+## Report summary
+![Simulated / experimental ratio by regime](reports/fig_overview.png)
+
+Full report: [`reports/REPORT.md`](reports/REPORT.md) (per-material figures, the cause-by-cause tests and
+limitations). Findings with their evidence are in [`docs/FINDINGS.md`](docs/FINDINGS.md).
+
+- **Bad experimental metadata was the largest single source of disagreement.** 11 of 188 ISODB isotherms are
+  physically implausible at their stated temperature (e.g. 77 K-shaped N2 labelled 298 K). They produced every
+  extreme sim/exp ratio (0.00–0.19 and 10.7–12.1). A physics-only screen removes them; the screen was written after
+  inspecting the data, so the unscreened numbers are reported alongside.
+- **Mg-MOF-74 CO2 is the one clear model failure.** Henry coefficient 0.17× experiment, low-pressure uptake 0.09×,
+  wrong isotherm shape. The model already puts CO2 at the Mg sites (46 % within 3 Å), so the missing piece is
+  binding strength, which LJ plus point charges cannot supply.
+- **HKUST-1, IRMOF-1 and ZIF-8 agree within lab-to-lab spread above 0.1 bar.** Labs disagree with each other by
+  1.1–1.8×, mostly by a constant factor, the signature of variable sample quality.
+- **UiO-66 is overpredicted 1.6–2× at every pressure.** Charges off or all-UFF LJ do not close the gap, so lost
+  pore volume in real samples is the more likely cause (not directly testable from ISODB).
+- **The simulation is converged and the thermodynamic corrections are small.** 4× cycles and a larger box change
+  loadings by ≤ 2.4 %; non-ideality ≤ 9 % at 10 bar; excess vs absolute ≤ 7 % for CO2 (but 11–43 % for N2, and only
+  7 of 207 records state their basis). The largest model sensitivity is the LJ set: UFF instead of DREIDING raises
+  ZIF-8 CO2 2.2×.
+- **Below 0.1 bar the data can't test the model:** 14 of 17 comparisons there rest on a single paper.
+
 
 ## Requirements
 - Conda env `ads` with `raspa3` 3.0.29 (conda-forge), pandas, scipy, matplotlib, pyyaml, pytest, pygaps.
@@ -93,6 +118,30 @@ bin/gcmc compare --case HKUST-1 --gas CO2 --T 298 --T-second 273 \
   - Henry coefficients (Widom vs per-isotherm low-P slopes);
   - per-paper Clausius–Clapeyron heats (only when a paper has exactly one isotherm at each temperature);
   - plot.
+
+## Full matrix and analysis
+
+```bash
+# All cases x gases x temperatures from cases/cases.yaml in one shared longest-first pool (resumable)
+bin/gcmc matrix --label main --jobs 8 --detach          # log: runs/matrix_main.log
+bin/gcmc matrix --cases HKUST-1 IRMOF-1 --gases CO2 --cycles 10000 --label quick
+
+# Experimental data for every case/gas (both CO2 temperatures)
+for c in MFI IRMOF-1 HKUST-1 Mg-MOF-74 UiO-66 ZIF-8; do
+  for g in CO2 CH4 N2; do bin/gcmc isodb --case $c --gas $g; done
+done
+
+# Phase 5: sensitivity runs (4x cycles, bigger cell, charges off, all-UFF LJ, snapshots) and all tests
+conda run -n ads python scripts/phase5_runs.py --jobs 8
+conda run -n ads python scripts/phase5_analysis.py --label main   # results/phase5/*.csv, compare plots
+conda run -n ads python scripts/oms_snapshots.py                  # nearest-metal distances (cause 6)
+conda run -n ads python scripts/report_assets.py                  # reports/tables.md, reports/fig_*.png
+```
+
+- `results/phase5/comparisons.csv`: sim/exp ratio by regime under the Gate-2 rules (`head_*`), without outliers
+  (`noout_*`), strict filters (`strict_*`) and after the plausibility screen (`scr_*`); basis effect; GCMC vs Widom.
+- `results/phase5/plausibility_flags.csv`: records removed by `clean.plausibility_flags` (post-hoc, physics only).
+- `results/phase5/{henry,ideal_gas,low_p_slopes,sample_quality,sample_quality_summary,sensitivity,oms_snapshots}.csv`.
 
 ## Tests
 ```bash

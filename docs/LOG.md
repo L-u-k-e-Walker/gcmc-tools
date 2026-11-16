@@ -116,3 +116,30 @@ Observations:
   the DSL fit fails to converge. Henry fit OK.
 - Running isotherms one after another wastes cores (each waits for its 10-bar point). Phase 4 needs a
   single shared pool over all points, longest first.
+
+## 2026-11-15/16 Phase 4: full matrix (branch phase4-matrix)
+- Approved changes from Gate 3 implemented and tested before launch: no extension when < 1 molecule in the box
+  (flagged "low loading"), rel_err = max(block SE, series SE), Quadratic fit model, one shared longest-first pool.
+- First launch at 22:2x was stopped within 2 min: the helium void fraction was computed per gas (gas-dependent
+  force field). Fixed to one framework-only calculation per structure (runs/_voidfraction/), relaunched 22:30.
+- `gcmc matrix --label main --jobs 8`: 24 isotherms, 288 runs (240 GCMC points + 24 Widom + 24 NVT1).
+  First pass estimated 38.3 CPU h; extension pass 100 runs (est. 28.1 CPU h) started 04:24; matrix done 07:52.
+  Wall 9.4 h. GCMC points used 60.7 CPU h. 0 PROBLEM / COLLECT PROBLEM lines. 24/24 isotherms collected.
+- Phase 5 sensitivity runs (scripts/phase5_runs.py, 63 runs) started automatically at 07:52 in tmux gcmc_phase5.
+
+## 2026-11-16 Phase 5: section 7 tests (branch phase5-causes)
+- phase5_analysis.py on `main` showed implausible experimental values (exp Henry 876, 281, 95 mmol/g/bar;
+  HKUST-1 CO2 273 K sim/exp ≈ 11). Raw-record inspection: cryogenic-shaped isotherms labelled 298 K and 273 K
+  isotherms below the 298 K data. Added clean.plausibility_flags (R1 supercritical apparent q/P > 20 mmol/g/bar
+  below 0.1 bar; R2 temperature order vs the better-sampled other T) with 2 tests; 90 tests pass. Post hoc and
+  disclosed; uses no simulation result. Headline (Gate-2) numbers are kept next to the screened ones.
+- Added: low-pressure log-log slope test, abs/excess basis effect, sample-quality between/within split,
+  GCMC-vs-Widom consistency at the lowest pressures, data-cleaning table, per-case 2x2 figures, overview figure.
+- Findings drafted as F5.1–F5.14 (Gate 5 draft; user granted autonomy).
+- Sensitivity runs: 63/63 OK, finished 11:26 (longest MFI bigcell 1 bar, 3.6 h). phase5_analysis.py rerun wrote
+  sensitivity.csv; oms_snapshots.py wrote oms_snapshots.csv (MFI skipped: structure not P1). Findings F5.15–F5.18
+  added (cause 4 rejected; cause 7 tested, no variant reconciles a disagreeing set; Mg-MOF-74 CO2 sits at Mg).
+
+## 2026-11-16 Phase 6: report (branch phase5-causes)
+- reports/REPORT.md completed (no pending items); README gains a report summary and full usage. 90 tests pass.
+- Phase branches merged into main and pushed to origin (user approved push at the end of the work).
