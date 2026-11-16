@@ -82,3 +82,21 @@ def test_dead_pid_is_not_running(tmp_path):
     d = make(tmp_path)
     (d / "pid").write_text("999999999")
     assert runner.status(d) == "incomplete"
+
+
+def test_run_pool_with_fake_raspa(tmp_path):
+    """Pool runs incomplete folders, records cpu/memory, then skips them on a second call (resume)."""
+    fake = tmp_path / "fake_raspa3"
+    fake.write_text(f"#!/bin/sh\nmkdir -p output && cp {DATA / 'cubtc_298K_1e5Pa.s0.txt'} output/output_298_1e+05.s0.txt\n")
+    fake.chmod(0o755)
+    dirs = [runner.prepare_run_folder(tmp_path / "runs", f"p{i}", {"simulation.json": str(i)}, SETTINGS)
+            for i in range(3)]
+    logs = []
+    runner.run_pool(dirs, jobs=2, poll=0.05, log=logs.append, exe=str(fake))
+    for d in dirs:
+        st = json.loads((d / "status.json").read_text())
+        assert st["problems"] == [] and st["returncode"] == 0 and st["max_rss_mb"] > 0
+        assert runner.status(d) == "complete"
+    logs.clear()
+    runner.run_pool(dirs, jobs=2, poll=0.05, log=logs.append, exe=str(fake))
+    assert all(l.startswith("skip (complete)") for l in logs)

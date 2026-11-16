@@ -121,10 +121,10 @@ def _archive_old_output(d):
         out.rename(d / f"output.failed-{n}")
 
 
-def run_pool(run_dirs, jobs=8, poll=10.0, log=print):
+def run_pool(run_dirs, jobs=8, poll=10.0, log=print, exe=None):
     """Run every folder that is not complete, at most `jobs` at a time. Blocks until done."""
     jobs = min(int(jobs), MAX_JOBS_HARD)
-    exe = shutil.which("raspa3")
+    exe = exe or shutil.which("raspa3")
     if exe is None:
         raise RuntimeError("raspa3 not on PATH; run inside `conda run -n ads`")
     todo = []
@@ -149,17 +149,24 @@ def run_pool(run_dirs, jobs=8, poll=10.0, log=print):
             log(f"start: {d}")
         time.sleep(poll)
         for d, (p, logf) in list(active.items()):
-            if p.poll() is not None:
-                logf.close()
-                (d / "pid").unlink(missing_ok=True)
-                settings = json.loads((d / "run.json").read_text())["settings"]
-                probs = validate(parse.parse_run(d), settings)
-                wall = time.time() - float((d / "started").read_text())
-                (d / "status.json").write_text(json.dumps(
-                    {"returncode": p.returncode, "problems": probs, "wall_s": wall}, indent=2))
-                log(f"done ({'OK' if not probs else 'PROBLEM: ' + '; '.join(probs)}, "
-                    f"{wall:.0f} s): {d}")
-                del active[d]
+            # wait4 reaps the child and returns its own CPU time and peak memory. CPU time does not
+            # depend on other load on the machine, so it is the cost measure used for budgets.
+            pid, wstatus, ru = os.wait4(p.pid, os.WNOHANG)
+            if pid == 0:
+                continue
+            p.returncode = os.waitstatus_to_exitcode(wstatus)
+            logf.close()
+            (d / "pid").unlink(missing_ok=True)
+            settings = json.loads((d / "run.json").read_text())["settings"]
+            probs = validate(parse.parse_run(d), settings)
+            wall = time.time() - float((d / "started").read_text())
+            (d / "status.json").write_text(json.dumps(
+                {"returncode": p.returncode, "problems": probs, "wall_s": wall,
+                 "cpu_user_s": ru.ru_utime, "cpu_sys_s": ru.ru_stime,
+                 "max_rss_mb": ru.ru_maxrss / 1024.0}, indent=2))
+            log(f"done ({'OK' if not probs else 'PROBLEM: ' + '; '.join(probs)}, "
+                f"{wall:.0f} s wall, {ru.ru_utime:.0f} s cpu, {ru.ru_maxrss / 1024:.0f} MB): {d}")
+            del active[d]
 
 
 # ------------------------------------------------------------- void fraction

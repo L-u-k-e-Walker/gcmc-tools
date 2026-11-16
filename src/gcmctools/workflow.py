@@ -244,7 +244,8 @@ def collect(parent, results_dir=None):
                        "enthalpy_kj_mol": r["enthalpy_kj_mol"], "enthalpy_err_kj_mol": r["enthalpy_err_kj_mol"],
                        "cycles": run["settings"]["cycles"], "framework_atoms": r["framework_atoms"],
                        "unit_cells": run["settings"]["unit_cells"], "coulomb_cutoff_A": r["coulomb_cutoff_A"],
-                       "wall_s": _wall(d), "run_hash": run["hash"], "run_dir": str(d.relative_to(ROOT))})
+                       "wall_s": _wall(d), "cpu_s": _status(d).get("cpu_user_s"),
+                       "max_rss_mb": _status(d).get("max_rss_mb"), "run_hash": run["hash"], "run_dir": str(d.relative_to(ROOT))})
     tidy = pd.DataFrame(rows)
     det = pd.DataFrame(detail)
     summary = {"case": meta["case"], "gas": meta["gas"], "T_K": meta["T_K"], "label": meta["label"],
@@ -271,6 +272,29 @@ def collect(parent, results_dir=None):
     det.to_csv(out / f"{stem}_points.csv", index=False)
     (out / f"{stem}.json").write_text(json.dumps(summary, indent=2, default=float))
     return out / f"{stem}.csv", tidy, det, summary
+
+
+def _status(d):
+    s = Path(d) / "status.json"
+    return json.loads(s.read_text()) if s.exists() else {}
+
+
+def plan(case_id, gas, T, pressures_bar, opts, recipe_override=None, cases=None):
+    """Dry run: what would be run, without creating folders or running anything."""
+    model = build_model(case_id, gas, recipe_override, cases)
+    cutoff = float(model["ff"].get("CutOffVDW", 12.0))
+    cells = raspa.choose_unit_cells(model["cell"], cutoff) if opts.get("unit_cells") in (None, "auto") \
+        else opts["unit_cells"]
+    n_atoms = model["expected_framework_atoms"] * cells[0] * cells[1] * cells[2]
+    return {"case": case_id, "gas": gas, "T_K": T, "recipe": model["recipe"], "unit_cells": cells,
+            "framework_atoms_unit_cell": model["expected_framework_atoms"],
+            "framework_atoms_simulation_box": n_atoms,
+            "perpendicular_widths_A": [round(w, 3) for w in raspa.perpendicular_widths(model["cell"])],
+            "void_fraction": opts.get("void_fraction"), "ideal_gas": opts.get("ideal_gas"),
+            "gcmc_points": len(pressures_bar), "pressures_bar": pressures_bar,
+            "cycles": opts["cycles"], "init_cycles": opts["init_cycles"],
+            "charges": "CIF (UseChargesFrom CIF_File)" if model["charges_from_cif"] else "force field pseudo-atoms",
+            "pseudo_atoms": [p["name"] for p in model["ff"]["PseudoAtoms"]]}
 
 
 def _wall(d):

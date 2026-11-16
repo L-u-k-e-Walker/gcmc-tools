@@ -89,3 +89,8 @@ Open:
   kept and plotted). Effect for HKUST-1 CO2 298 K: pristine 50 → 34 isotherms (21 → 18 papers); the
   experimental Henry coefficient now rests on 1 isotherm. FINDINGS Phase 2 numbers updated.
 - User is gaming: no RASPA3 runs until they say so. Only light work (ISODB fetch, setup, scripts).
+- IRMOF-1 CO2 ISODB: 217 candidates; 298 K: 30 accepted (30 pristine); 273 K: 4 accepted.
+- runner: per-run CPU time and peak memory via os.wait4 (status.json, points CSV). CPU seconds are the
+  budget measure because they do not depend on other load (e.g. gaming). `--dry-run` added. 82 tests.
+- Pilot ready to launch (not started): IRMOF-1 CO2 298 K, 10 points 0.01–10 bar, 2×2×2 primitive
+  (848 atoms), 20k + 5k cycles, auto-extension on, Widom + NVT1. Waiting for the user's go-ahead.

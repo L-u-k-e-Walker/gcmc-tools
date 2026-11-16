@@ -46,6 +46,11 @@ def cmd_isotherm(a, argv):
         case_id, case_table = workflow.adhoc_case(a.cif)
     pressures = a.pressures or d["pressures_bar"]
     label = a.label or ("ideal" if a.ideal_gas else "real") + f"_vf-{a.void_fraction}"
+    if a.dry_run:
+        print(json.dumps(workflow.plan(case_id, a.gas, a.T, pressures, {
+            "cycles": a.cycles, "init_cycles": a.init_cycles, "unit_cells": a.unit_cells or "auto",
+            "void_fraction": a.void_fraction, "ideal_gas": a.ideal_gas}, a.recipe, case_table), indent=2))
+        return
     if a.detach:
         return _detach(["isotherm"] + argv, f"gcmc_{case_id}_{a.gas}_{a.T:g}_{label}".replace(".", "p"))
     opts = {"cycles": a.cycles, "init_cycles": a.init_cycles, "unit_cells": a.unit_cells or "auto",
@@ -161,6 +166,7 @@ def main(argv=None):
     s.add_argument("--no-widom", action="store_true")
     s.add_argument("--no-nvt1", action="store_true")
     s.add_argument("--detach", action="store_true", help="run in a detached tmux session")
+    s.add_argument("--dry-run", action="store_true", help="show what would run; create and run nothing")
     c = sub.add_parser("collect", help="(re)write results for an isotherm run folder")
     c.add_argument("isotherm_dir")
     i = sub.add_parser("isodb", help="fetch and clean ISODB isotherms for a case")
