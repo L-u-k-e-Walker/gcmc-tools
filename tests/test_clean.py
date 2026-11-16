@@ -157,3 +157,25 @@ def test_paper_folder_uses_bibliography_stem():
 def test_water_in_title_flags_sample_state():
     for title in ("CO2/H2O Adsorption Equilibrium on HKUST-1", "Effect of water on CO2 uptake"):
         assert run(rec(), {**PAPER, "title": title})[0]["sample_flags"] == "aged_humid"
+
+
+def _iso(sid, doi, p, q):
+    return pd.DataFrame({"source_id": sid, "doi": doi, "P_bar": p, "loading_mmol_g": q})
+
+
+def test_plausibility_r1_cryogenic_shape():
+    p = np.array([0.005, 0.01, 0.05, 0.5, 1.0])
+    tidy = pd.concat([_iso("cryo", "d1", p, [10, 12, 14, 16, 17]),     # 2000 mmol/g/bar: 77 K shape
+                      _iso("ok", "d2", p, 0.4 * p)])                    # linear, K = 0.4
+    f = clean.plausibility_flags(tidy, "N2", 298.0)
+    assert set(f) == {"cryo"} and f["cryo"].startswith("R1")
+    assert clean.plausibility_flags(tidy, "CO2", 298.0) == {}          # R1 not applied to CO2
+
+
+def test_plausibility_r2_temperature_order():
+    p = np.logspace(-2, 1, 8)
+    warm = pd.concat([_iso("w1", "a", p, 2 * p / (1 + p)), _iso("w2", "b", p, 2.2 * p / (1 + p))])
+    cold = pd.concat([_iso("c_ok", "c", p, 4 * p / (1 + p)), _iso("c_bad", "d", p, 0.2 * p / (1 + p))])
+    f = clean.plausibility_flags(cold, "CO2", 273.0, warm, 298.0)
+    assert set(f) == {"c_bad"} and f["c_bad"].startswith("R2")
+    assert clean.plausibility_flags(warm, "CO2", 298.0, cold[cold.source_id == "c_ok"], 273.0) == {}

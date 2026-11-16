@@ -240,6 +240,45 @@ def henry_low_pressure(p, q, p_max=0.1, min_points=3):
     return float(np.sum(p[m] * q[m]) / np.sum(p[m] ** 2))
 
 
+# Post-hoc plausibility screen (added in Phase 5 after inspecting the accepted records; disclosed in
+# REPORT.md). It uses experimental data and general physics only, never a simulation result.
+SUPERCRITICAL_MAX_APPARENT_K = 20.0     # mmol/g/bar; N2/CH4 Henry constants at ~298 K are ~0.1-3 in porous solids
+
+
+def plausibility_flags(tidy, gas, T, other_T_tidy=None, other_T=None, p_low=0.1, grid=None):
+    """Flag accepted isotherms that cannot be physical at the stated gas/temperature.
+
+    R1 (N2, CH4 at >= 290 K): apparent q/P > SUPERCRITICAL_MAX_APPARENT_K at any point with P <= p_low
+       (a near-saturation, cryogenic-looking shape; likely a mislabeled 77/87/112 K isotherm or unit error).
+    R2 (two temperatures available): an isotherm at the lower T lies below the other-T experimental
+       consensus median at most (> 50 %) of its overlapping grid points, or an isotherm at the higher T lies
+       above it. Adsorption is exothermic, so loading at fixed P must fall with T.
+    Returns {source_id: reason}.
+    """
+    out = {}
+    if gas in ("N2", "CH4") and T >= 290:
+        for sid, g in tidy.groupby("source_id"):
+            m = (g.P_bar <= p_low) & (g.P_bar > 0)
+            if m.any():
+                k = float((g.loading_mmol_g[m] / g.P_bar[m]).max())
+                if k > SUPERCRITICAL_MAX_APPARENT_K:
+                    out[sid] = f"R1: apparent q/P {k:.0f} mmol/g/bar at P <= {p_low} bar (supercritical gas)"
+    if other_T_tidy is not None and len(other_T_tidy) and other_T is not None and other_T != T:
+        grid = default_grid(1e-3, 100.0, 51) if grid is None else grid
+        cons, _ = consensus(other_T_tidy, grid)
+        med = cons.set_index("P_bar")["median"]
+        for sid, g in tidy.groupby("source_id"):
+            q = pd.Series(interp_isotherm(g.P_bar, g.loading_mmol_g, grid), index=grid)
+            both = q.notna() & med.notna()
+            if both.sum() < 3:
+                continue
+            wrong = (q[both] < med[both]) if T < other_T else (q[both] > med[both])
+            if wrong.mean() > 0.5 and sid not in out:
+                out[sid] = (f"R2: {'below' if T < other_T else 'above'} the {other_T:g} K experimental consensus "
+                            f"at {wrong.mean():.0%} of {int(both.sum())} overlapping points")
+    return out
+
+
 def isosteric_heat(cons_lo, T_lo, cons_hi, T_hi, loadings):
     """Clausius-Clapeyron Qst (kJ/mol, positive) at fixed loading from two consensus medians."""
     out = []
