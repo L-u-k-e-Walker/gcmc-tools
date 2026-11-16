@@ -34,7 +34,8 @@ FLAG_WORDS = {
     "doped": [r"\bdop(ed|ing|ant)"],
     "mixed-metal": [r"mixed[- ]metal", r"bimetallic", r"heterometal"],
     "defect-engineered": [r"defect", r"missing[- ]linker", r"modulat"],
-    "aged_humid": [r"humid", r"moisture", r"water vapou?r", r"\bag(ed|eing|ing)\b", r"steam", r"hydrated"],
+    "aged_humid": [r"humid", r"moisture", r"water", r"\bh2o\b", r"\bag(ed|eing|ing)\b", r"steam",
+                   r"hydrat"],
 }
 TITLE_EXCLUDING = {"shaped", "aged_humid"}
 

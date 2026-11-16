@@ -152,3 +152,8 @@ def test_isosteric_heat_recovers_vant_hoff():
 def test_paper_folder_uses_bibliography_stem():
     assert isodb.paper_folder({"_bib_stem": "10.1007s1045001596846", "DOI": "10.1007/s10450-015-9684-6"}) \
         == "10.1007s1045001596846"
+
+
+def test_water_in_title_flags_sample_state():
+    for title in ("CO2/H2O Adsorption Equilibrium on HKUST-1", "Effect of water on CO2 uptake"):
+        assert run(rec(), {**PAPER, "title": title})[0]["sample_flags"] == "aged_humid"

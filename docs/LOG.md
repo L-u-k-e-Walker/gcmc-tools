@@ -82,3 +82,10 @@ Open:
   Two of them are outliers at about 0.1 mmol/g at 1 bar, which may be water-preloaded samples. The records do not say.
 - 10.1007/s10973-013-3497-1 ("Hydrogen production from bio-oil by chemical looping reforming") is
   filed under CuBTC in ISODB. The title does not fit and its isotherms are outliers. Possibly a misattributed DOI.
+
+## 2026-11-15: Gate 2 approved; Phase 3 preparation
+- User: keep the strict exp/sim rule; "safe option" for H2O in titles; bio-oil record stays (default).
+- Safe option chosen: water/H2O words in titles flag aged_humid (excluded from the pristine consensus,
+  kept and plotted). Effect for HKUST-1 CO2 298 K: pristine 50 → 34 isotherms (21 → 18 papers); the
+  experimental Henry coefficient now rests on 1 isotherm. FINDINGS Phase 2 numbers updated.
+- User is gaming: no RASPA3 runs until they say so. Only light work (ISODB fetch, setup, scripts).
