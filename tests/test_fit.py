@@ -57,3 +57,15 @@ def test_model_forms_match_pygaps():
 
 def test_too_few_points():
     assert not fit.fit_model("DSLangmuir", P[:4], P[:4], P[:4])["ok"]
+
+
+def test_quadratic_matches_pygaps_and_fits_s_shape():
+    import pygaps.modelling as pm
+    m = pm.get_isotherm_model("Quadratic")
+    m.params = {"n_m": 10.0, "Ka": 0.05, "Kb": 0.02}
+    for p in (0.01, 1.0, 9.0):
+        assert m.loading(p) == pytest.approx(fit.quadratic(p, 10.0, 0.05, 0.02))
+    q = fit.quadratic(P, 10.0, 0.05, 0.02)          # convex at low P (S-shape)
+    r = fit.fit_model("Quadratic", P, q, 0.01 * q)
+    assert r["ok"] and r["chi2_reduced"] < 1e-6
+    assert r["params"]["Kb_1_bar2"] == pytest.approx(0.02, rel=1e-4)

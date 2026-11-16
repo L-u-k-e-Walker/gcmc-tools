@@ -24,10 +24,16 @@ def dslangmuir(p, n1, k1, n2, k2):
     return n1 * k1 * p / (1.0 + k1 * p) + n2 * k2 * p / (1.0 + k2 * p)
 
 
+def quadratic(p, n_m, ka, kb):
+    """pyGAPS 'Quadratic' (cooperative two-site) model; can describe S-shaped isotherms. Saturation 2*n_m."""
+    return n_m * (ka + 2.0 * kb * p) * p / (1.0 + ka * p + kb * p ** 2)
+
+
 MODELS = {
     "Henry": (henry, ["K_mmol_g_bar"]),
     "Langmuir": (langmuir, ["n_m_mmol_g", "K_1_bar"]),
     "DSLangmuir": (dslangmuir, ["n1_mmol_g", "K1_1_bar", "n2_mmol_g", "K2_1_bar"]),
+    "Quadratic": (quadratic, ["n_m_mmol_g", "Ka_1_bar", "Kb_1_bar2"]),
 }
 
 
@@ -52,9 +58,12 @@ def fit_model(name, p, q, err, p_max=None):
         guess, bounds = [q[0] / p[0]], ([0.0], [np.inf])
     elif name == "Langmuir":
         guess, bounds = [1.2 * qmax, (q[0] / p[0]) / (1.2 * qmax)], ([0, 0], [np.inf, np.inf])
-    else:
+    elif name == "DSLangmuir":
         k0 = (q[0] / p[0]) / qmax
         guess, bounds = [0.3 * qmax, 10 * k0, 0.9 * qmax, 0.3 * k0], ([0] * 4, [np.inf] * 4)
+    else:
+        ka = (q[0] / p[0]) / qmax
+        guess, bounds = [0.6 * qmax, ka, ka ** 2], ([0] * 3, [np.inf] * 3)
     try:
         popt, pcov = curve_fit(f, p, q, p0=guess, sigma=s, absolute_sigma=True, bounds=bounds,
                                maxfev=20000)
@@ -74,9 +83,10 @@ def fit_model(name, p, q, err, p_max=None):
 
 
 def fit_all(p, q, err, henry_points=3):
-    """Henry on the lowest `henry_points` pressures; Langmuir and DSL on all points."""
+    """Henry on the lowest `henry_points` pressures; Langmuir, DSL and Quadratic on all points."""
     order = np.argsort(p)
     p_h = float(np.asarray(p)[order][min(henry_points, len(p)) - 1])
     return {"Henry": fit_model("Henry", p, q, err, p_max=p_h),
             "Langmuir": fit_model("Langmuir", p, q, err),
-            "DSLangmuir": fit_model("DSLangmuir", p, q, err)}
+            "DSLangmuir": fit_model("DSLangmuir", p, q, err),
+            "Quadratic": fit_model("Quadratic", p, q, err)}

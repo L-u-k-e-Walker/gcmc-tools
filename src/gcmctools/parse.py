@@ -118,3 +118,17 @@ def drift_check(series, n_skip=1):
     se = math.sqrt(sa ** 2 + sb ** 2)
     diff = mb - ma
     return diff, se, bool(se > 0 and abs(diff) > 2 * se)
+
+
+def series_stderr(series, n_skip=1):
+    """Standard error of the mean from the production status samples, treated as independent.
+
+    An independent cross-check of RASPA3's 5-block error. Samples are PrintEvery cycles apart;
+    if they are correlated this underestimates the error, so the larger of the two estimates is used
+    for convergence decisions.
+    """
+    vals = [v for _, v in series[n_skip:]]
+    if len(vals) < 4:
+        return None
+    m = sum(vals) / len(vals)
+    return math.sqrt(sum((v - m) ** 2 for v in vals) / (len(vals) - 1) / len(vals))

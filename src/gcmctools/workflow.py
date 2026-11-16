@@ -10,6 +10,7 @@ from . import fit, parse, raspa, runner, units
 
 ROOT = Path(__file__).resolve().parents[2]
 REL_ERR_LIMIT = 0.05
+LOW_LOADING_MOLECULES = 1.0   # below this average number of molecules in the box, no extension
 
 
 def load_cases():
@@ -164,33 +165,134 @@ def run_isotherm(case_id, gas, T, pressures_bar, opts, label, jobs=8, extend=Tru
     runner.run_pool(dirs + extra, jobs=jobs, log=log)
 
     if extend:
-        final = []
-        ext = []
-        for d, p in zip(dirs, pressures_bar):
-            r = parse.parse_run(d)
-            factor = extension_factor(r)
-            if factor > 1:
-                log(f"extend {p} bar by x{factor}: {d.name}")
-                ext.append(setup_point(model, "gcmc", gas, T, units.bar_to_pa(p), opts, parent,
-                                       cycles=opts["cycles"] * factor, init_cycles=opts["init_cycles"] * 2))
-                final.append(ext[-1])
-            else:
-                final.append(d)
-        if ext:
-            runner.run_pool(ext, jobs=jobs, log=log)
-        meta = json.loads((parent / "isotherm.json").read_text())
-        meta["gcmc_dirs_first_pass"] = meta["gcmc_dirs"]
-        meta["gcmc_dirs"] = [str(d) for d in final]
-        (parent / "isotherm.json").write_text(json.dumps(meta, indent=2))
+        extend_points(parent, model, opts, jobs=jobs, log=log)
     return parent
 
 
-def extension_factor(r, max_factor=4):
+def molecules_in_box(r, unit_cells):
+    if not r or r.get("abs_molec_uc") is None:
+        return None
+    return r["abs_molec_uc"] * unit_cells[0] * unit_cells[1] * unit_cells[2]
+
+
+def plan_extensions(parent, model, opts, log=print):
+    """Set up extension runs for unconverged points of one isotherm; record the final folder per point.
+
+    Returns the list of new folders (not yet run).
+    """
+    meta = json.loads((parent / "isotherm.json").read_text())
+    if "gcmc_dirs_first_pass" in meta:            # already planned (resume): return the extension folders
+        return [Path(d) for d, f in zip(meta["gcmc_dirs"], meta["gcmc_dirs_first_pass"]) if d != f]
+    final, ext = [], []
+    for d in map(Path, meta["gcmc_dirs"]):
+        run = json.loads((d / "run.json").read_text())
+        st = meta["gas"], meta["T_K"], run["settings"]["P_Pa"]
+        factor = extension_factor(parse.parse_run(d), unit_cells=opts["unit_cells"])
+        if factor > 1:
+            log(f"extend {st[0]} {st[1]:g} K {st[2] / 1e5:g} bar by x{factor}: {d}")
+            nd = setup_point(model, "gcmc", meta["gas"], meta["T_K"], run["settings"]["P_Pa"], opts, parent,
+                             cycles=opts["cycles"] * factor, init_cycles=opts["init_cycles"] * 2)
+            ext.append(nd)
+            final.append(nd)
+        else:
+            final.append(d)
+    meta["gcmc_dirs_first_pass"] = meta["gcmc_dirs"]
+    meta["gcmc_dirs"] = [str(d) for d in final]
+    (parent / "isotherm.json").write_text(json.dumps(meta, indent=2))
+    return ext
+
+
+def extend_points(parent, model, opts, jobs=8, log=print):
+    ext = plan_extensions(parent, model, opts, log)
+    if ext:
+        runner.run_pool(ext, jobs=jobs, log=log)
+
+
+def setup_isotherm(case_id, gas, T, pressures_bar, opts, label, widom=True, nvt1=True, log=print, cases=None):
+    """Create all run folders of one isotherm (no running). Returns (parent, model, opts, gcmc, extra)."""
+    model = build_model(case_id, gas, cases=cases)
+    parent = isotherm_dir(case_id, gas, T, label)
+    parent.mkdir(parents=True, exist_ok=True)
+    opts = resolve_options(model, opts, parent, log)
+    dirs = [setup_point(model, "gcmc", gas, T, units.bar_to_pa(p), opts, parent) for p in pressures_bar]
+    extra = []
+    if widom:
+        extra.append(setup_point(model, "widom", gas, T, 1e5, opts, parent, init_cycles=0))
+    if nvt1:
+        extra.append(setup_point(model, "nvt1", gas, T, 1e5, opts, parent))
+    meta_path = parent / "isotherm.json"
+    if not meta_path.exists():
+        meta_path.write_text(json.dumps(
+            {"case": case_id, "gas": gas, "T_K": T, "pressures_bar": pressures_bar, "label": label,
+             "options": opts, "gcmc_dirs": [str(d) for d in dirs], "extra_dirs": [str(d) for d in extra]},
+            indent=2))
+    return parent, model, opts, dirs, extra
+
+
+def cost_estimate(case_id, gas, T, kind, P_bar, cycles, calibration):
+    """Relative CPU cost of a run (for longest-first scheduling), from the 10-bar calibration."""
+    c = next((r for r in calibration if r["case"] == case_id and r["gas"] == gas and r["T_K"] == T), None)
+    if c is None:
+        return 0.0
+    n10 = c["molecules_box"] or 0.0
+    per_step = c["cpu_s_per_cycle"] / max(20.0, n10)
+    n = n10 * min(1.0, P_bar / 10.0) if kind == "gcmc" else 1.0
+    return per_step * max(20.0, n) * cycles
+
+
+def run_matrix(items, opts, label, jobs=8, log=print):
+    """items: [(case, gas, T)]. One shared pool, longest first; then one shared extension pass."""
+    cal_path = ROOT / "results" / "budget" / "calibration.json"
+    cal = json.loads(cal_path.read_text()) if cal_path.exists() else []
+    cases = load_cases()
+    pressures = cases["defaults"]["pressures_bar"]
+    isos, queue = [], []
+    for case_id, gas, T in items:
+        parent, model, o, dirs, extra = setup_isotherm(case_id, gas, T, pressures, opts, label, log=log, cases=cases)
+        isos.append((parent, model, o))
+        for d, p in zip(dirs, pressures):
+            queue.append((cost_estimate(case_id, gas, T, "gcmc", p, o["cycles"] + o["init_cycles"], cal), d))
+        for d in extra:
+            queue.append((cost_estimate(case_id, gas, T, "widom", 0, o["cycles"], cal), d))
+    queue.sort(key=lambda x: -x[0])
+    log(f"matrix: {len(isos)} isotherms, {len(queue)} runs, estimated {sum(c for c, _ in queue) / 3600:.1f} CPU h "
+        f"(first pass, from calibration)")
+    runner.run_pool([d for _, d in queue], jobs=jobs, log=log)
+    ext = []
+    for parent, model, o in isos:
+        meta = json.loads((parent / "isotherm.json").read_text())
+        for d in plan_extensions(parent, model, o, log):
+            run = json.loads((d / "run.json").read_text())
+            ext.append((cost_estimate(meta["case"], meta["gas"], meta["T_K"], "gcmc", run["settings"]["P_Pa"] / 1e5,
+                                      run["settings"]["cycles"] + run["settings"]["init_cycles"], cal), d))
+    ext.sort(key=lambda x: -x[0])
+    log(f"matrix: extension pass with {len(ext)} runs, estimated {sum(c for c, _ in ext) / 3600:.1f} CPU h")
+    runner.run_pool([d for _, d in ext], jobs=jobs, log=log)
+    out = []
+    for parent, _, _ in isos:
+        try:
+            csv, *_ = collect(parent)
+            from . import report
+            report.plot_isotherm(csv)
+            out.append(csv)
+            log(f"collected {csv}")
+        except Exception as e:          # report and continue with the other isotherms
+            log(f"COLLECT PROBLEM {parent}: {e}")
+    return out
+
+
+def extension_factor(r, max_factor=4, unit_cells=None):
     """Cycle multiplier for an unconverged point (1 = fine).
 
     Statistical error scales as 1/sqrt(cycles), so the factor to reach 5% relative error is
     (relerr/0.05)^2, capped. A drift flag alone gives x2 (and the init cycles are doubled).
+    Points with fewer than LOW_LOADING_MOLECULES molecules in the box on average are not extended:
+    5% is unreachable there in any affordable run, and the Widom Henry coefficient covers that range.
     """
+    if unit_cells is not None:
+        n = molecules_in_box(r, unit_cells)
+        if n is not None and n < LOW_LOADING_MOLECULES:
+            return 1
     rel = rel_err(r)
     drift = parse.drift_check(r["production_series_exc_mol_kg"])[2]
     f = 1
@@ -202,9 +304,14 @@ def extension_factor(r, max_factor=4):
 
 
 def rel_err(r):
+    """Relative error of the excess loading: the larger of RASPA3's block error and the series error."""
     if not r or not r.get("exc_mol_kg"):
         return None
-    return abs(r["exc_err_mol_kg"] / r["exc_mol_kg"])
+    err = r["exc_err_mol_kg"]
+    se = parse.series_stderr(r.get("production_series_exc_mol_kg") or [])
+    if se is not None:
+        err = max(err, se)
+    return abs(err / r["exc_mol_kg"])
 
 
 # ------------------------------------------------------------------ collect
@@ -224,11 +331,14 @@ def collect(parent, results_dir=None):
         p_bar = units.pa_to_bar(run["settings"]["P_Pa"])
         drift, drift_se, drift_flag = parse.drift_check(r["production_series_exc_mol_kg"])
         rel = rel_err(r)
+        n_box = molecules_in_box(r, run["settings"]["unit_cells"])
         flags = []
         if drift_flag:
             flags.append("drift")
         if rel is not None and rel > REL_ERR_LIMIT:
             flags.append(f"relerr>{REL_ERR_LIMIT:.0%}")
+        if n_box is not None and n_box < LOW_LOADING_MOLECULES:
+            flags.append("low_loading")
         for basis in ("excess", "absolute"):
             k = "exc" if basis == "excess" else "abs"
             rows.append({"material_id": meta["case"], "adsorbate": meta["gas"], "T_K": meta["T_K"],
@@ -240,6 +350,8 @@ def collect(parent, results_dir=None):
                        "helium_void_fraction": r["helium_void_fraction"],
                        "exc_mmol_g": r["exc_mol_kg"], "exc_err": r["exc_err_mol_kg"],
                        "abs_mmol_g": r["abs_mol_kg"], "abs_err": r["abs_err_mol_kg"],
+                       "exc_err_series": parse.series_stderr(r["production_series_exc_mol_kg"]),
+                       "molecules_in_box": n_box,
                        "rel_err": rel, "drift_mmol_g": drift, "drift_se": drift_se, "drift_flag": drift_flag,
                        "enthalpy_kj_mol": r["enthalpy_kj_mol"], "enthalpy_err_kj_mol": r["enthalpy_err_kj_mol"],
                        "cycles": run["settings"]["cycles"], "framework_atoms": r["framework_atoms"],

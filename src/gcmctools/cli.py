@@ -142,6 +142,22 @@ def cmd_compare(a, argv):
     print(png)
 
 
+def cmd_matrix(a, argv):
+    cases = workflow.load_cases()
+    d = cases["defaults"]
+    items = [(c, g, T) for c in (a.cases or list(cases["cases"])) for g in (a.gases or d["gases"])
+             for T in d["temperatures_K"][g]]
+    if a.detach:
+        return _detach(["matrix"] + argv, f"gcmc_matrix_{a.label}")
+    opts = {"cycles": a.cycles, "init_cycles": a.init_cycles, "unit_cells": "auto", "void_fraction": "auto",
+            "ideal_gas": False, "coulomb_cutoff": 12.0, "print_every": None}
+    log = _log_to(ROOT / "runs" / f"matrix_{a.label}.log")
+    log(f"gcmc matrix {' '.join(argv)}")
+    for csv in workflow.run_matrix(items, opts, a.label, jobs=a.jobs, log=log):
+        print(csv)
+    log("matrix done")
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     ap = argparse.ArgumentParser(prog="gcmc")
@@ -180,8 +196,16 @@ def main(argv=None):
     k.add_argument("--T", type=float, required=True)
     k.add_argument("--sim", required=True, help="results/<case>/<gas>_<T>K_<label>.csv")
     k.add_argument("--T-second", type=float, help="second experimental temperature for Clausius-Clapeyron")
+    m = sub.add_parser("matrix", help="run all case/gas/T isotherms in one longest-first pool")
+    m.add_argument("--cases", nargs="+")
+    m.add_argument("--gases", nargs="+", choices=["CO2", "CH4", "N2"])
+    m.add_argument("--cycles", type=int, default=20000)
+    m.add_argument("--init-cycles", type=int, default=5000)
+    m.add_argument("--jobs", type=int, default=8)
+    m.add_argument("--label", default="main")
+    m.add_argument("--detach", action="store_true")
     a = ap.parse_args(argv)
-    {"isotherm": cmd_isotherm, "collect": cmd_collect, "isodb": cmd_isodb,
+    {"matrix": cmd_matrix, "isotherm": cmd_isotherm, "collect": cmd_collect, "isodb": cmd_isodb,
      "compare": cmd_compare}[a.cmd](a, argv[1:])
 
 

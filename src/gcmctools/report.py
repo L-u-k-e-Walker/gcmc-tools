@@ -49,12 +49,13 @@ def plot_isotherm(csv_path, out_path=None):
         last = d.iloc[-1]
         ax.annotate(basis, (last.P_bar, last.loading_mmol_g), xytext=(6, -3 if i == 0 else 6),
                     textcoords="offset points", color=TEXT, fontsize=9)
-    f = meta.get("fits_excess", {}).get("DSLangmuir", {})
-    if f.get("ok"):
-        from .fit import dslangmuir
+    fits = {k: v for k, v in meta.get("fits_excess", {}).items() if k != "Henry" and v.get("ok")}
+    if fits:
+        from . import fit as fitmod
+        name, f = min(fits.items(), key=lambda kv: kv[1]["aic"])
         p = np.logspace(np.log10(df.P_bar.min()), np.log10(df.P_bar.max()), 200)
-        ax.plot(p, dslangmuir(p, *f["params"].values()), color=MUTED, linewidth=1.2, linestyle="--",
-                label="dual-site Langmuir fit (excess)")
+        ax.plot(p, fitmod.MODELS[name][0](p, *f["params"].values()), color=MUTED, linewidth=1.2, linestyle="--",
+                label=f"{name} fit to excess (lowest AIC; reduced chi2 {f['chi2_reduced']:.2g})")
     ax.set_xscale("log")
     ax.set_xlabel("Pressure (bar)", color=TEXT)
     ax.set_ylabel("Loading (mmol/g)", color=TEXT)

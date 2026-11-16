@@ -72,3 +72,10 @@ def test_drift_check_flags_trend_not_noise():
     assert parse.drift_check(flat)[2] is False
     assert parse.drift_check(ramp)[2] is True
     assert parse.drift_check(ramp[:4]) == (None, None, False)
+
+
+def test_series_stderr():
+    s = [(0, 99.0)] + [(i, v) for i, v in enumerate([1.0, 2.0, 3.0, 4.0, 5.0], start=1)]
+    # sample sd of 1..5 is sqrt(2.5); SE = sqrt(2.5/5)
+    assert parse.series_stderr(s) == pytest.approx((2.5 / 5) ** 0.5)
+    assert parse.series_stderr(s[:3]) is None
