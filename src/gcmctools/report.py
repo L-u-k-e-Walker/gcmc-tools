@@ -41,8 +41,8 @@ def plot_isotherm(csv_path, out_path=None):
     fig, ax = plt.subplots(figsize=(6.4, 4.4), dpi=150)
     fig.patch.set_facecolor(SURFACE)
     _style(ax)
-    for i, (basis, marker) in enumerate((("excess", "o"), ("absolute", "s"))):
-        d = df[df.basis == basis].sort_values("P_bar")
+    for i, (basis, marker) in reversed(list(enumerate((("excess", "o"), ("absolute", "s"))))):
+        d = df[df.basis == basis].sort_values("P_bar")  # absolute drawn first so excess sits on top
         ax.errorbar(d.P_bar, d.loading_mmol_g, yerr=d.loading_err_mmol_g, color=SERIES[i], marker=marker,
                     markersize=6, linewidth=2, capsize=2.5, elinewidth=1.2, label=f"GCMC {basis}",
                     markeredgecolor=SURFACE, markeredgewidth=1.0)

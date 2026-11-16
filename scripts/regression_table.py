@@ -13,6 +13,8 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "results" / "HKUST-1"
 
@@ -54,12 +56,20 @@ def main():
         return
     opts = pd.read_csv(RES / "CO2_298K_regression_old_points.csv").set_index("P_bar")
     cor = pd.read_csv(cpath).set_index("P_bar")
+    # Expected (deterministic) effects. The old run used phi = 1, so its absolute loading is a
+    # function of fugacity f = P; the real-gas run sees f = phi*P. Use the old absolute DSL fit.
+    import json
+    from gcmctools.fit import dslangmuir
+    fa = json.loads((RES / "CO2_298K_regression_old.json").read_text())["fits_absolute"]["DSLangmuir"]
     rows = []
     for p in sorted(targets):
         o, c = opts.loc[p], cor.loc[p]
         d = c.exc_mmol_g - o.exc_mmol_g
         se = math.sqrt(c.exc_err ** 2 + o.exc_err ** 2)
-        rows.append({"P_bar": p, "old_exc": o.exc_mmol_g, "old_err": o.exc_err, "phi_old": o.fugacity_coefficient,
+        fug = dslangmuir(c.fugacity_coefficient * p, *fa["params"].values()) - dslangmuir(p, *fa["params"].values())
+        vfterm = (o.abs_mmol_g - o.exc_mmol_g) - (c.abs_mmol_g - c.exc_mmol_g)
+        rows.append({"P_bar": p, "expected_fugacity_effect": fug, "expected_voidfraction_effect": vfterm,
+                     "expected_total": fug + vfterm, "old_exc": o.exc_mmol_g, "old_err": o.exc_err, "phi_old": o.fugacity_coefficient,
                      "vf_old": o.helium_void_fraction, "new_exc": c.exc_mmol_g, "new_err": c.exc_err,
                      "new_abs": c.abs_mmol_g, "phi_new": c.fugacity_coefficient, "vf_new": c.helium_void_fraction,
                      "delta": d, "delta_se": se, "delta_rel": d / o.exc_mmol_g,
@@ -68,12 +78,13 @@ def main():
     t2 = pd.DataFrame(rows)
     t2.to_csv(RES / "regression_corrected_vs_old.csv", index=False)
     print("\n## Corrected (Peng-Robinson, computed void fraction) vs old\n")
-    print("| P (bar) | phi | old excess | corrected excess | change | change/SE | abs-exc old→new |")
-    print("|---:|---:|---:|---:|---:|---:|---:|")
+    print("| P (bar) | phi | old excess | corrected excess | measured change | change/SE | expected: fugacity | expected: void fraction | expected total |")
+    print("|---:|---:|---:|---:|---:|---:|---:|---:|---:|")
     for r in rows:
         print(f"| {r['P_bar']:g} | {r['phi_new']:.4f} | {r['old_exc']:.3f} ± {r['old_err']:.3f} | "
               f"{r['new_exc']:.3f} ± {r['new_err']:.3f} | {r['delta']:+.3f} ({r['delta_rel']:+.1%}) | "
-              f"{r['delta'] / r['delta_se']:+.1f} | {r['abs_minus_exc_old']:.4f} → {r['abs_minus_exc_new']:.4f} |")
+              f"{r['delta'] / r['delta_se']:+.1f} | {r['expected_fugacity_effect']:+.3f} | {r['expected_voidfraction_effect']:+.4f} | "
+              f"{r['expected_total']:+.3f} ({r['expected_total'] / r['old_exc']:+.1%}) |")
 
 
 if __name__ == "__main__":

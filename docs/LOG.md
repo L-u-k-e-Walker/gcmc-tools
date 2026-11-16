@@ -30,3 +30,29 @@ User decisions are recorded in RECON.md §2. My decisions:
   NOT UFF: Rappé 1992 Zn3+2 has x1 = 2.763 Å and D1 = 0.124 kcal/mol (checked in Open Babel UFF.prm and
   CP2K uff_table), i.e. 62.40 K / 2.4616 Å, matching the all-UFF example
   `advanced/5_tmmc_methane_in_tobacco_667` (62.39 / 2.46). The recipe uses the UFF value.
+
+## 2026-11-15: Phase 1, Tool 1 and the HKUST-1 regression
+Did:
+- Built Tool 1 (raspa.py, runner.py, parse.py, fit.py, workflow.py, cli.py, report.py, units.py),
+  prepared the 6 structures (scripts/prepare_structures.py) and wrote FORCEFIELD.md. 54 tests pass.
+- Regression, old settings (example 11 unchanged, φ = 1.0, void fraction default 1.0, 1×1×1, Coulomb
+  cutoff auto, 20k + 5k cycles, PrintEvery 1000). Inputs verified identical to the old run except
+  `FugacityCoefficient: 1.0`. All 8 points pass vs the MISSION targets AND vs the on-disk PR numbers
+  (results/HKUST-1/regression_table.csv).
+- Corrected settings (Peng–Robinson, void fraction from raspa3-cli = 0.74575 ± 0.00051, 2 replicas
+  of 10⁶ samples; everything else unchanged), plus a Widom-only run and a 1-molecule NVT run.
+  Results in results/HKUST-1/regression_corrected_vs_old.csv.
+Verified:
+- Every run passed validation (624 framework atoms, net charge 0, finished, cycle count).
+- Measured changes corrected − old are all within ±0.5 combined SE. The expected deterministic changes
+  are −0.19 mmol/g (−1.5%) at 5 bar and < 0.5% below 2 bar, so 20k cycles cannot resolve them per point.
+- ΔH₀ from 1-molecule NVT (−25.42 ± 0.31 kJ/mol) matches the GCMC fluctuation value at 0.01 bar
+  (−25.45 ± 0.23). Widom K_H = 6.32 ± 0.16 mmol/g/bar vs Henry fit on 0.01–0.1 bar 6.00 ± 0.13.
+  The fit is lower, as expected from curvature already present by 0.1 bar.
+Observations for Phase 3:
+- RASPA3 uses 5 blocks. The same 0.01 bar point gave rel. error 9.5% (old) and 2.7% (corrected), so the
+  block error estimate is itself uncertain by tens of percent. 7 of 16 points exceed the 5% limit at 20k
+  cycles; with auto-extension these would be re-run.
+- Drift flag (2σ, halves of the production series) fired on 1/16 points (old, 2 bar), consistent
+  with the expected false-positive rate of about 5%.
+- Wall time per point (8 concurrent): 2 min (0.01 bar) to 19 min (5 bar) for 25k cycles, 624 atoms.

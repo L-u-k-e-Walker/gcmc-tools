@@ -1,0 +1,17 @@
+material_id,adsorbate,T_K,P_bar,loading_mmol_g,loading_err_mmol_g,basis,source,source_id,doi,notes
+HKUST-1,CO2,298.0,0.01,0.06295823,0.005949374,excess,sim,6477ea0a93,,regression_old;relerr>5%
+HKUST-1,CO2,298.0,0.01,0.06341736,0.005949374,absolute,sim,6477ea0a93,,regression_old;relerr>5%
+HKUST-1,CO2,298.0,0.05,0.291981,0.01416527,excess,sim,fb8f9e80a9,,regression_old
+HKUST-1,CO2,298.0,0.05,0.2942772,0.01416527,absolute,sim,fb8f9e80a9,,regression_old
+HKUST-1,CO2,298.0,0.1,0.5511336,0.02494258,excess,sim,45c95fdee9,,regression_old
+HKUST-1,CO2,298.0,0.1,0.5557272,0.02494258,absolute,sim,45c95fdee9,,regression_old
+HKUST-1,CO2,298.0,0.25,1.185635,0.05010397,excess,sim,9f902a9941,,regression_old
+HKUST-1,CO2,298.0,0.25,1.197129,0.05010397,absolute,sim,9f902a9941,,regression_old
+HKUST-1,CO2,298.0,0.5,1.983181,0.07168306,excess,sim,5f290a63ff,,regression_old
+HKUST-1,CO2,298.0,0.5,2.0062,0.07168306,absolute,sim,5f290a63ff,,regression_old
+HKUST-1,CO2,298.0,1.0,3.383132,0.08496766,excess,sim,f5477f7b60,,regression_old
+HKUST-1,CO2,298.0,1.0,3.429295,0.08496766,absolute,sim,f5477f7b60,,regression_old
+HKUST-1,CO2,298.0,2.0,6.280821,0.1631383,excess,sim,2f6bbbe3c9,,regression_old;drift
+HKUST-1,CO2,298.0,2.0,6.373664,0.1631383,absolute,sim,2f6bbbe3c9,,regression_old;drift
+HKUST-1,CO2,298.0,5.0,12.27886,0.10598,excess,sim,0b0cfd5145,,regression_old
+HKUST-1,CO2,298.0,5.0,12.51496,0.10598,absolute,sim,0b0cfd5145,,regression_old
