@@ -1,0 +1,15 @@
+{
+  "case": "UiO-66",
+  "gas": "N2",
+  "T_K": 298.0,
+  "isodb_mirror_commit": "9e1ee472967d66ec7845e23c5d5b986eca5ff020",
+  "n_candidates": 70,
+  "n_accepted": 3,
+  "rules": "Clean ISODB candidates into the tidy table, with a ledger row for every candidate.\n\nRules are applied in a fixed order; the first failure is the rejection reason. Nothing is\ndropped silently: dropped points are counted in the ledger notes.\n\nExp/sim rule (ISODB per-isotherm `category` is usually empty, docs/RECON.md section 5):\naccept if the isotherm category is 'exp', or it is empty and the paper's categories are exactly\n['exp']. Anything else (sim/mod/qua, or an empty category in a mixed paper) is rejected.\n\nSample flags: ISODB gives modified samples their own material entries, so a record on the case\nhashkey is normally the pristine reference sample. Flags that exclude a record from the\npristine consensus come from the adsorbent name (any category below), or from the paper title\nfor sample-state words only (SHAPED, AGED_HUMID), which ISODB does not split into materials.\nComposite/functionalized/doped/mixed-metal/defect words in the title are recorded as\n`title_mentions` for review but do not exclude.\n",
+  "T_window_K": 2.0,
+  "hashkeys": [
+    "NIST-MATDB-5ab0dbe0639729711750ef4b97715f0f",
+    "NIST-MATDB-27ce47f74d79f611f6d3f9caa686697b"
+  ],
+  "n_candidate_papers": 42
+}

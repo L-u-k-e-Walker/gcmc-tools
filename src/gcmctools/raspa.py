@@ -185,14 +185,17 @@ def is_p1(text):
 
 # ------------------------------------------------------------ force field files
 
-def build_force_field(elements, gases, recipe=None):
-    """force_field.json dict for framework `elements` (charges from CIF) and `gases`."""
+def build_force_field(elements, gases, recipe=None, lj_set="framework_elements"):
+    """force_field.json dict for framework `elements` (charges from CIF) and `gases`.
+
+    lj_set: 'framework_elements' (the project recipe) or 'framework_elements_uff' (all-UFF sensitivity set).
+    """
     recipe = recipe or load_recipe()
     pseudo, self_int = [], []
     for el in sorted(elements):
-        if el not in recipe["framework_elements"]:
+        if el not in recipe[lj_set]:
             raise KeyError(f"no LJ parameters for framework element {el}")
-        p = recipe["framework_elements"][el]
+        p = recipe[lj_set][el]
         pseudo.append({"name": el, "framework": True, "print_to_output": True, "element": el,
                        "print_as": el, "mass": p["mass"], "charge": 0.0})
         self_int.append({"name": el, "type": "lennard-jones",
@@ -264,7 +267,7 @@ def component_block(gas, kind, recipe=None, widom_in_gcmc=False, legacy_example1
 
 def simulation_json(*, kind, framework_name, gas, T, P_pa, cycles, init_cycles, unit_cells,
                     void_fraction=None, ideal_gas=False, coulomb_cutoff=12.0,
-                    charges_from_cif=True, print_every=None, legacy_example11=False):
+                    charges_from_cif=True, print_every=None, legacy_example11=False, extra_system=None):
     """Build simulation.json as a dict.
 
     void_fraction None -> key omitted (RASPA default 1.0, used only for the regression).
@@ -281,6 +284,7 @@ def simulation_json(*, kind, framework_name, gas, T, P_pa, cycles, init_cycles, 
         system["CutOffCoulomb"] = float(coulomb_cutoff)
     system.update({"ChargeMethod": "Ewald", "ExternalTemperature": float(T),
                    "ExternalPressure": float(P_pa)})
+    system.update(extra_system or {})
     comp = component_block(gas, kind, legacy_example11=legacy_example11)
     if kind == "gcmc" and ideal_gas:
         comp = {"Name": comp["Name"], "FugacityCoefficient": 1.0,

@@ -103,3 +103,300 @@
 2026-11-15 19:38:16     rejected    2  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
 2026-11-15 19:38:16     rejected    1  not experimental (paper categories sim, isotherm unlabeled)
 2026-11-15 19:38:16 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:25 gcmc isodb --case MFI --gas CO2
+2026-11-15 22:32:25 registry match: NIST-MATDB-b342ae78d659f61921dcf8ab7031c67a 'MFI' via ['MFI'] in_cases_yaml=True
+2026-11-15 22:32:25 registry match: NIST-MATDB-5d0728ebc1e0053aa120288307a704c8 'Silicalite MFI' via ['Silicalite'] in_cases_yaml=True
+2026-11-15 22:32:25 registry match: NIST-MATDB-62df1ce09c126da2a0753b6c5e4da27b 'Silicalite-1' via ['Silicalite-1'] in_cases_yaml=True
+2026-11-15 22:32:25 registry match: NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82 'ZSM-5' via ['ZSM-5'] in_cases_yaml=True
+2026-11-15 22:32:25 conditional hashkeys NOT used automatically: ['NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82'] (ZSM-5 records only if the record states all-silica)
+2026-11-15 22:32:25 ISODB mirror 9e1ee4729: 10 candidate papers for MFI + CO2 (1 list no isotherms)
+2026-11-15 22:32:26 24 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:26 T=298 K: 24 candidates, 0 accepted (0 pristine, 0 flagged) -> data/isodb_clean/MFI_CO2_298K.csv
+2026-11-15 22:32:26     rejected   11  temperature outside 298 +/- 2 K
+2026-11-15 22:32:26     rejected    6  multicomponent or different adsorbate
+2026-11-15 22:32:26     rejected    4  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:26     rejected    2  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:26     rejected    1  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:32:26 T=273 K: 24 candidates, 0 accepted (0 pristine, 0 flagged) -> data/isodb_clean/MFI_CO2_273K.csv
+2026-11-15 22:32:26     rejected   18  temperature outside 273 +/- 2 K
+2026-11-15 22:32:26     rejected    6  multicomponent or different adsorbate
+2026-11-15 22:32:26 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:28 gcmc isodb --case MFI --gas CH4
+2026-11-15 22:32:28 registry match: NIST-MATDB-b342ae78d659f61921dcf8ab7031c67a 'MFI' via ['MFI'] in_cases_yaml=True
+2026-11-15 22:32:28 registry match: NIST-MATDB-5d0728ebc1e0053aa120288307a704c8 'Silicalite MFI' via ['Silicalite'] in_cases_yaml=True
+2026-11-15 22:32:28 registry match: NIST-MATDB-62df1ce09c126da2a0753b6c5e4da27b 'Silicalite-1' via ['Silicalite-1'] in_cases_yaml=True
+2026-11-15 22:32:28 registry match: NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82 'ZSM-5' via ['ZSM-5'] in_cases_yaml=True
+2026-11-15 22:32:28 conditional hashkeys NOT used automatically: ['NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82'] (ZSM-5 records only if the record states all-silica)
+2026-11-15 22:32:28 ISODB mirror 9e1ee4729: 15 candidate papers for MFI + CH4 (0 list no isotherms)
+2026-11-15 22:32:28 42 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:28 T=298 K: 42 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/MFI_CH4_298K.csv
+2026-11-15 22:32:28     rejected   18  temperature outside 298 +/- 2 K
+2026-11-15 22:32:28     rejected   17  multicomponent or different adsorbate
+2026-11-15 22:32:28     rejected    3  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:28     rejected    1  category 'sim' (isotherm)
+2026-11-15 22:32:28 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:30 gcmc isodb --case MFI --gas N2
+2026-11-15 22:32:30 registry match: NIST-MATDB-b342ae78d659f61921dcf8ab7031c67a 'MFI' via ['MFI'] in_cases_yaml=True
+2026-11-15 22:32:30 registry match: NIST-MATDB-5d0728ebc1e0053aa120288307a704c8 'Silicalite MFI' via ['Silicalite'] in_cases_yaml=True
+2026-11-15 22:32:30 registry match: NIST-MATDB-62df1ce09c126da2a0753b6c5e4da27b 'Silicalite-1' via ['Silicalite-1'] in_cases_yaml=True
+2026-11-15 22:32:30 registry match: NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82 'ZSM-5' via ['ZSM-5'] in_cases_yaml=True
+2026-11-15 22:32:30 conditional hashkeys NOT used automatically: ['NIST-MATDB-0d52b4312e8dd98a53fcfaba14cd0e82'] (ZSM-5 records only if the record states all-silica)
+2026-11-15 22:32:30 ISODB mirror 9e1ee4729: 15 candidate papers for MFI + N2 (2 list no isotherms)
+2026-11-15 22:32:30 28 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:30 T=298 K: 28 candidates, 0 accepted (0 pristine, 0 flagged) -> data/isodb_clean/MFI_N2_298K.csv
+2026-11-15 22:32:30     rejected   14  multicomponent or different adsorbate
+2026-11-15 22:32:30     rejected   11  temperature outside 298 +/- 2 K
+2026-11-15 22:32:30     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:30 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:32 gcmc isodb --case IRMOF-1 --gas CO2
+2026-11-15 22:32:32 registry match: NIST-MATDB-2c9380bddc59f547484ff729eab7d7cb 'IRMOF-1' via ['IRMOF-1', 'MOF-5'] in_cases_yaml=True
+2026-11-15 22:32:32 registry match: NIST-MATDB-e6c566b2365fa4837027d00c57215620 'Zn4O(BDC)3' via ['Zn4O(BDC)3'] in_cases_yaml=True
+2026-11-15 22:32:32 ISODB mirror 9e1ee4729: 81 candidate papers for IRMOF-1 + CO2 (24 list no isotherms)
+2026-11-15 22:32:32 217 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:32 T=298 K: 217 candidates, 30 accepted (30 pristine, 0 flagged) -> data/isodb_clean/IRMOF-1_CO2_298K.csv
+2026-11-15 22:32:32     rejected  103  temperature outside 298 +/- 2 K
+2026-11-15 22:32:32     rejected   20  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected   11  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected   11  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    9  not experimental (paper categories mod+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    8  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    8  multicomponent or different adsorbate
+2026-11-15 22:32:32     rejected    6  category 'sim' (isotherm)
+2026-11-15 22:32:32     rejected    2  unit: loading unit not on allowlist: 'wt%'
+2026-11-15 22:32:32     rejected    2  unit: loading unit not on allowlist: 'g/l'
+2026-11-15 22:32:32     rejected    2  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+qua, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    1  fewer than 3 usable points
+2026-11-15 22:32:32     rejected    1  duplicate data of ...
+2026-11-15 22:32:32     rejected    1  unit: loading unit not on allowlist: 'cm3(STP)/cm3'
+2026-11-15 22:32:32 T=273 K: 217 candidates, 4 accepted (4 pristine, 0 flagged) -> data/isodb_clean/IRMOF-1_CO2_273K.csv
+2026-11-15 22:32:32     rejected  198  temperature outside 273 +/- 2 K
+2026-11-15 22:32:32     rejected    8  multicomponent or different adsorbate
+2026-11-15 22:32:32     rejected    2  unit: loading unit not on allowlist: 'wt%'
+2026-11-15 22:32:32     rejected    2  unit: loading unit not on allowlist: 'ml/g'
+2026-11-15 22:32:32     rejected    2  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:32     rejected    1  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:32 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:34 gcmc isodb --case IRMOF-1 --gas CH4
+2026-11-15 22:32:34 registry match: NIST-MATDB-2c9380bddc59f547484ff729eab7d7cb 'IRMOF-1' via ['IRMOF-1', 'MOF-5'] in_cases_yaml=True
+2026-11-15 22:32:34 registry match: NIST-MATDB-e6c566b2365fa4837027d00c57215620 'Zn4O(BDC)3' via ['Zn4O(BDC)3'] in_cases_yaml=True
+2026-11-15 22:32:34 ISODB mirror 9e1ee4729: 55 candidate papers for IRMOF-1 + CH4 (16 list no isotherms)
+2026-11-15 22:32:35 85 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:35 T=298 K: 85 candidates, 10 accepted (10 pristine, 0 flagged) -> data/isodb_clean/IRMOF-1_CH4_298K.csv
+2026-11-15 22:32:35     rejected   24  temperature outside 298 +/- 2 K
+2026-11-15 22:32:35     rejected   17  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:35     rejected   10  multicomponent or different adsorbate
+2026-11-15 22:32:35     rejected    7  category 'sim' (isotherm)
+2026-11-15 22:32:35     rejected    4  category 'qua' (isotherm)
+2026-11-15 22:32:35     rejected    3  unit: loading unit not on allowlist: 'wt%'
+2026-11-15 22:32:35     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:35     rejected    3  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:35     rejected    2  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:35     rejected    1  duplicate data of ...
+2026-11-15 22:32:35     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:35 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:36 gcmc isodb --case IRMOF-1 --gas N2
+2026-11-15 22:32:36 registry match: NIST-MATDB-2c9380bddc59f547484ff729eab7d7cb 'IRMOF-1' via ['IRMOF-1', 'MOF-5'] in_cases_yaml=True
+2026-11-15 22:32:36 registry match: NIST-MATDB-e6c566b2365fa4837027d00c57215620 'Zn4O(BDC)3' via ['Zn4O(BDC)3'] in_cases_yaml=True
+2026-11-15 22:32:36 ISODB mirror 9e1ee4729: 114 candidate papers for IRMOF-1 + N2 (31 list no isotherms)
+2026-11-15 22:32:37 151 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:37 T=298 K: 151 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/IRMOF-1_N2_298K.csv
+2026-11-15 22:32:37     rejected  127  temperature outside 298 +/- 2 K
+2026-11-15 22:32:37     rejected    8  multicomponent or different adsorbate
+2026-11-15 22:32:37     rejected    6  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:37     rejected    2  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:37     rejected    2  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:37     rejected    1  duplicate data of ...
+2026-11-15 22:32:37     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:37     rejected    1  category 'sim' (isotherm)
+2026-11-15 22:32:37 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:38 gcmc isodb --case HKUST-1 --gas CO2
+2026-11-15 22:32:38 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 22:32:38 ISODB mirror 9e1ee4729: 99 candidate papers for HKUST-1 + CO2 (18 list no isotherms)
+2026-11-15 22:32:38 256 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:38 T=298 K: 256 candidates, 51 accepted (34 pristine, 17 flagged) -> data/isodb_clean/HKUST-1_CO2_298K.csv
+2026-11-15 22:32:38     rejected  118  temperature outside 298 +/- 2 K
+2026-11-15 22:32:38     rejected   33  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:38     rejected   17  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:38     rejected   10  multicomponent or different adsorbate
+2026-11-15 22:32:38     rejected    8  category 'sim' (isotherm)
+2026-11-15 22:32:38     rejected    8  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:38     rejected    4  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:38     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:38     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:32:38     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 22:32:38     rejected    1  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 22:32:38 T=273 K: 256 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/HKUST-1_CO2_273K.csv
+2026-11-15 22:32:38     rejected  239  temperature outside 273 +/- 2 K
+2026-11-15 22:32:38     rejected   10  multicomponent or different adsorbate
+2026-11-15 22:32:38     rejected    2  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 22:32:38     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:38     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 22:32:38 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:40 gcmc isodb --case HKUST-1 --gas CH4
+2026-11-15 22:32:40 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 22:32:40 ISODB mirror 9e1ee4729: 70 candidate papers for HKUST-1 + CH4 (13 list no isotherms)
+2026-11-15 22:32:41 178 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:41 T=298 K: 178 candidates, 23 accepted (23 pristine, 0 flagged) -> data/isodb_clean/HKUST-1_CH4_298K.csv
+2026-11-15 22:32:41     rejected  113  temperature outside 298 +/- 2 K
+2026-11-15 22:32:41     rejected   19  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:41     rejected    9  multicomponent or different adsorbate
+2026-11-15 22:32:41     rejected    4  category 'sim' (isotherm)
+2026-11-15 22:32:41     rejected    3  unit: loading unit not on allowlist: 'cm3(STP)/cm3'
+2026-11-15 22:32:41     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:41     rejected    1  fewer than 3 usable points
+2026-11-15 22:32:41     rejected    1  unit: loading unit not on allowlist: 'volume/volume'
+2026-11-15 22:32:41     rejected    1  unit: loading unit not on allowlist: 'mmol adsorbed'
+2026-11-15 22:32:41     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:41     rejected    1  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:41 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:42 gcmc isodb --case HKUST-1 --gas N2
+2026-11-15 22:32:42 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 22:32:42 ISODB mirror 9e1ee4729: 182 candidate papers for HKUST-1 + N2 (34 list no isotherms)
+2026-11-15 22:32:44 296 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:44 T=298 K: 296 candidates, 17 accepted (17 pristine, 0 flagged) -> data/isodb_clean/HKUST-1_N2_298K.csv
+2026-11-15 22:32:44     rejected  226  temperature outside 298 +/- 2 K
+2026-11-15 22:32:44     rejected   25  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:44     rejected   13  multicomponent or different adsorbate
+2026-11-15 22:32:44     rejected    9  category 'sim' (isotherm)
+2026-11-15 22:32:44     rejected    5  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:44     rejected    1  category 'mod' (isotherm)
+2026-11-15 22:32:44 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:45 gcmc isodb --case Mg-MOF-74 --gas CO2
+2026-11-15 22:32:45 registry match: NIST-MATDB-f5e80ffaaaf05f4ed655664fd22defb9 'Mg-MOF-74' via ['Mg-MOF-74', 'CPO-27-Mg'] in_cases_yaml=True
+2026-11-15 22:32:45 registry match: NIST-MATDB-f4b549a56c1a5caf008c436b7d0aaaea 'Mg2(dobdc)' via ['Mg2(dobdc)'] in_cases_yaml=True
+2026-11-15 22:32:45 ISODB mirror 9e1ee4729: 52 candidate papers for Mg-MOF-74 + CO2 (17 list no isotherms)
+2026-11-15 22:32:46 138 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:46 T=298 K: 138 candidates, 9 accepted (8 pristine, 1 flagged) -> data/isodb_clean/Mg-MOF-74_CO2_298K.csv
+2026-11-15 22:32:46     rejected   78  temperature outside 298 +/- 2 K
+2026-11-15 22:32:46     rejected   16  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    7  multicomponent or different adsorbate
+2026-11-15 22:32:46     rejected    6  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    6  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    3  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    3  category 'sim' (isotherm)
+2026-11-15 22:32:46     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    3  ambiguous exp/non-exp (paper categories exp+qua, isotherm unlabeled)
+2026-11-15 22:32:46     rejected    2  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 22:32:46     rejected    2  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:46 T=273 K: 138 candidates, 1 accepted (1 pristine, 0 flagged) -> data/isodb_clean/Mg-MOF-74_CO2_273K.csv
+2026-11-15 22:32:46     rejected  130  temperature outside 273 +/- 2 K
+2026-11-15 22:32:46     rejected    7  multicomponent or different adsorbate
+2026-11-15 22:32:46 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:48 gcmc isodb --case Mg-MOF-74 --gas CH4
+2026-11-15 22:32:48 registry match: NIST-MATDB-f5e80ffaaaf05f4ed655664fd22defb9 'Mg-MOF-74' via ['Mg-MOF-74', 'CPO-27-Mg'] in_cases_yaml=True
+2026-11-15 22:32:48 registry match: NIST-MATDB-f4b549a56c1a5caf008c436b7d0aaaea 'Mg2(dobdc)' via ['Mg2(dobdc)'] in_cases_yaml=True
+2026-11-15 22:32:48 ISODB mirror 9e1ee4729: 20 candidate papers for Mg-MOF-74 + CH4 (4 list no isotherms)
+2026-11-15 22:32:48 65 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:49 T=298 K: 65 candidates, 2 accepted (2 pristine, 0 flagged) -> data/isodb_clean/Mg-MOF-74_CH4_298K.csv
+2026-11-15 22:32:49     rejected   41  temperature outside 298 +/- 2 K
+2026-11-15 22:32:49     rejected    9  not experimental (paper categories mod+qua, isotherm unlabeled)
+2026-11-15 22:32:49     rejected    4  multicomponent or different adsorbate
+2026-11-15 22:32:49     rejected    2  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:49     rejected    2  unit: loading unit not on allowlist: 'cm3(STP)/cm3'
+2026-11-15 22:32:49     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:32:49     rejected    1  category 'sim' (isotherm)
+2026-11-15 22:32:49     rejected    1  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:49     rejected    1  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:32:49     rejected    1  ambiguous exp/non-exp (paper categories exp+qua, isotherm unlabeled)
+2026-11-15 22:32:49 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:50 gcmc isodb --case Mg-MOF-74 --gas N2
+2026-11-15 22:32:50 registry match: NIST-MATDB-f5e80ffaaaf05f4ed655664fd22defb9 'Mg-MOF-74' via ['Mg-MOF-74', 'CPO-27-Mg'] in_cases_yaml=True
+2026-11-15 22:32:50 registry match: NIST-MATDB-f4b549a56c1a5caf008c436b7d0aaaea 'Mg2(dobdc)' via ['Mg2(dobdc)'] in_cases_yaml=True
+2026-11-15 22:32:50 ISODB mirror 9e1ee4729: 39 candidate papers for Mg-MOF-74 + N2 (7 list no isotherms)
+2026-11-15 22:32:51 52 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:51 T=298 K: 52 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/Mg-MOF-74_N2_298K.csv
+2026-11-15 22:32:51     rejected   43  temperature outside 298 +/- 2 K
+2026-11-15 22:32:51     rejected    3  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:32:51     rejected    2  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:32:51     rejected    1  multicomponent or different adsorbate
+2026-11-15 22:32:51 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:52 gcmc isodb --case UiO-66 --gas CO2
+2026-11-15 22:32:52 registry match: NIST-MATDB-5ab0dbe0639729711750ef4b97715f0f 'UiO-66' via ['UiO-66'] in_cases_yaml=True
+2026-11-15 22:32:52 registry match: NIST-MATDB-27ce47f74d79f611f6d3f9caa686697b 'UiO-66(Zr)' via ['UiO-66(Zr)'] in_cases_yaml=True
+2026-11-15 22:32:52 ISODB mirror 9e1ee4729: 27 candidate papers for UiO-66 + CO2 (2 list no isotherms)
+2026-11-15 22:32:53 75 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:54 T=298 K: 75 candidates, 5 accepted (4 pristine, 1 flagged) -> data/isodb_clean/UiO-66_CO2_298K.csv
+2026-11-15 22:32:54     rejected   55  temperature outside 298 +/- 2 K
+2026-11-15 22:32:54     rejected    6  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:54     rejected    4  multicomponent or different adsorbate
+2026-11-15 22:32:54     rejected    2  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:54     rejected    1  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:54     rejected    1  unit: loading unit not on allowlist: 'cm3(STP)/cm3'
+2026-11-15 22:32:54     rejected    1  category 'sim' (isotherm)
+2026-11-15 22:32:54 T=273 K: 75 candidates, 5 accepted (5 pristine, 0 flagged) -> data/isodb_clean/UiO-66_CO2_273K.csv
+2026-11-15 22:32:54     rejected   53  temperature outside 273 +/- 2 K
+2026-11-15 22:32:54     rejected    7  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:32:54     rejected    4  multicomponent or different adsorbate
+2026-11-15 22:32:54     rejected    4  ambiguous exp/non-exp (paper categories exp+qua, isotherm unlabeled)
+2026-11-15 22:32:54     rejected    2  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:54 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:55 gcmc isodb --case UiO-66 --gas CH4
+2026-11-15 22:32:55 registry match: NIST-MATDB-5ab0dbe0639729711750ef4b97715f0f 'UiO-66' via ['UiO-66'] in_cases_yaml=True
+2026-11-15 22:32:55 registry match: NIST-MATDB-27ce47f74d79f611f6d3f9caa686697b 'UiO-66(Zr)' via ['UiO-66(Zr)'] in_cases_yaml=True
+2026-11-15 22:32:55 ISODB mirror 9e1ee4729: 13 candidate papers for UiO-66 + CH4 (1 list no isotherms)
+2026-11-15 22:32:56 37 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:56 T=298 K: 37 candidates, 1 accepted (1 pristine, 0 flagged) -> data/isodb_clean/UiO-66_CH4_298K.csv
+2026-11-15 22:32:56     rejected   28  temperature outside 298 +/- 2 K
+2026-11-15 22:32:56     rejected    4  multicomponent or different adsorbate
+2026-11-15 22:32:56     rejected    2  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:56     rejected    1  unit: loading unit not on allowlist: 'volume/volume'
+2026-11-15 22:32:56     rejected    1  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:56 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:32:57 gcmc isodb --case UiO-66 --gas N2
+2026-11-15 22:32:57 registry match: NIST-MATDB-5ab0dbe0639729711750ef4b97715f0f 'UiO-66' via ['UiO-66'] in_cases_yaml=True
+2026-11-15 22:32:57 registry match: NIST-MATDB-27ce47f74d79f611f6d3f9caa686697b 'UiO-66(Zr)' via ['UiO-66(Zr)'] in_cases_yaml=True
+2026-11-15 22:32:57 ISODB mirror 9e1ee4729: 42 candidate papers for UiO-66 + N2 (3 list no isotherms)
+2026-11-15 22:32:58 70 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:32:58 T=298 K: 70 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/UiO-66_N2_298K.csv
+2026-11-15 22:32:58     rejected   64  temperature outside 298 +/- 2 K
+2026-11-15 22:32:58     rejected    2  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:32:58     rejected    1  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:32:58 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:33:00 gcmc isodb --case ZIF-8 --gas CO2
+2026-11-15 22:33:00 registry match: NIST-MATDB-b2dc02871a66ac38e4b195796cf3e00b 'ZIF-8' via ['ZIF-8', 'Basolite Z1200', 'MAF-4'] in_cases_yaml=True
+2026-11-15 22:33:00 ISODB mirror 9e1ee4729: 51 candidate papers for ZIF-8 + CO2 (14 list no isotherms)
+2026-11-15 22:33:01 113 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:33:01 T=298 K: 113 candidates, 12 accepted (12 pristine, 0 flagged) -> data/isodb_clean/ZIF-8_CO2_298K.csv
+2026-11-15 22:33:01     rejected   65  temperature outside 298 +/- 2 K
+2026-11-15 22:33:01     rejected   11  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    8  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    6  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    5  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    2  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    2  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    1  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    1  unit: loading unit not on allowlist: 'molecules/cage'
+2026-11-15 22:33:01 T=273 K: 113 candidates, 11 accepted (11 pristine, 0 flagged) -> data/isodb_clean/ZIF-8_CO2_273K.csv
+2026-11-15 22:33:01     rejected   95  temperature outside 273 +/- 2 K
+2026-11-15 22:33:01     rejected    6  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:33:01     rejected    1  duplicate data of ...
+2026-11-15 22:33:01 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:33:02 gcmc isodb --case ZIF-8 --gas CH4
+2026-11-15 22:33:02 registry match: NIST-MATDB-b2dc02871a66ac38e4b195796cf3e00b 'ZIF-8' via ['ZIF-8', 'Basolite Z1200', 'MAF-4'] in_cases_yaml=True
+2026-11-15 22:33:02 ISODB mirror 9e1ee4729: 37 candidate papers for ZIF-8 + CH4 (11 list no isotherms)
+2026-11-15 22:33:03 71 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:33:03 T=298 K: 71 candidates, 5 accepted (5 pristine, 0 flagged) -> data/isodb_clean/ZIF-8_CH4_298K.csv
+2026-11-15 22:33:03     rejected   44  temperature outside 298 +/- 2 K
+2026-11-15 22:33:03     rejected    3  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    3  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    3  unit: loading unit not on allowlist: 'wt%'
+2026-11-15 22:33:03     rejected    3  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    2  ambiguous exp/non-exp (paper categories exp+qua+sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    2  multicomponent or different adsorbate
+2026-11-15 22:33:03     rejected    2  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    1  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:33:03     rejected    1  unit: loading unit not on allowlist: 'molecules/cage'
+2026-11-15 22:33:03 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 22:33:04 gcmc isodb --case ZIF-8 --gas N2
+2026-11-15 22:33:04 registry match: NIST-MATDB-b2dc02871a66ac38e4b195796cf3e00b 'ZIF-8' via ['ZIF-8', 'Basolite Z1200', 'MAF-4'] in_cases_yaml=True
+2026-11-15 22:33:05 ISODB mirror 9e1ee4729: 81 candidate papers for ZIF-8 + N2 (12 list no isotherms)
+2026-11-15 22:33:05 124 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 22:33:05 T=298 K: 124 candidates, 6 accepted (6 pristine, 0 flagged) -> data/isodb_clean/ZIF-8_N2_298K.csv
+2026-11-15 22:33:05     rejected  108  temperature outside 298 +/- 2 K
+2026-11-15 22:33:05     rejected    6  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 22:33:05     rejected    2  multicomponent or different adsorbate
+2026-11-15 22:33:05     rejected    1  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 22:33:05     rejected    1  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 22:33:05 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv

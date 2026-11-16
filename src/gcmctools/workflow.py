@@ -41,8 +41,9 @@ def build_model(case_id, gas, recipe_override=None, cases=None):
     cif_path = ROOT / c["structure"]
     cif_text = cif_path.read_text()
     info = json.loads((cif_path.parent / "structure.json").read_text())
-    if recipe == "mof":
-        ff = raspa.build_force_field(info["elements"], [gas], r)
+    if recipe in ("mof", "mof-uff"):
+        ff = raspa.build_force_field(info["elements"], [gas], r,
+                                     "framework_elements_uff" if recipe == "mof-uff" else "framework_elements")
         charges_from_cif = True
         expected = c.get("expected_framework_atoms") or (info["natoms_cif_rows"] if info["p1"] else None)
     elif recipe == "example10":
@@ -78,7 +79,7 @@ def setup_point(model, kind, gas, T, P_pa, opts, parent, cycles=None, init_cycle
         init_cycles=init_cycles, unit_cells=opts["unit_cells"], void_fraction=opts["void_fraction"],
         ideal_gas=opts["ideal_gas"], coulomb_cutoff=opts["coulomb_cutoff"],
         charges_from_cif=model["charges_from_cif"], print_every=opts.get("print_every"),
-        legacy_example11=(model["recipe"] == "example11"))
+        legacy_example11=(model["recipe"] == "example11"), extra_system=opts.get("extra_system"))
     files = {"simulation.json": json.dumps(sim, indent=2),
              "force_field.json": json.dumps(model["ff"], indent=2),
              f"{model['framework_name']}.cif": model["cif_text"],
@@ -88,6 +89,8 @@ def setup_point(model, kind, gas, T, P_pa, opts, parent, cycles=None, init_cycle
                 "void_fraction": opts["void_fraction"], "ideal_gas": opts["ideal_gas"],
                 "coulomb_cutoff": opts["coulomb_cutoff"], "recipe": model["recipe"],
                 "expected_framework_atoms": model["expected_framework_atoms"]}
+    if opts.get("extra_system"):
+        settings["extra_system"] = opts["extra_system"]
     label = {"gcmc": f"gcmc_{P_pa:g}Pa", "widom": "widom", "nvt1": "nvt1"}[kind]
     return runner.prepare_run_folder(parent / kind, label, files, settings)
 

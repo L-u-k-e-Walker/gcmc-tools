@@ -1,0 +1,12 @@
+material_id,adsorbate,T_K,P_bar,loading_mmol_g,loading_err_mmol_g,basis,source,source_id,doi,notes
+UiO-66,CH4,298.0,0.001672,0.00117,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.056955,0.03922,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.115581,0.08181,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.226674,0.16134,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.339672,0.24227,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.450613,0.32195,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.561705,0.40031,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.673872,0.47948,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.784894,0.55718,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,0.896665,0.63547,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
+UiO-66,CH4,298.0,1.00777,0.71207,,unknown,exp,10.1021acs.iecr.5b03517.Isotherm10,10.1021/acs.iecr.5b03517,
