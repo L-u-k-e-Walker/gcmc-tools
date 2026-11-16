@@ -1,0 +1,2 @@
+case,gas,T_K,sim_widom,sim_widom_err,exp_median,exp_n_isotherms,exp_n_papers,sim_over_exp
+IRMOF-1,CO2,298.0,0.813938,0.008344068,0.6095114050383198,1,1,1.3353942080030938

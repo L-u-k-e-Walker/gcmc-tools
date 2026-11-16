@@ -1,5 +1,5 @@
 {
-  "sim_csv": "results/IRMOF-1/CO2_298K_pilot.csv",
+  "sim_csv": "/home/lukew/projects/gcmc-tools/results/IRMOF-1/CO2_298K_pilot.csv",
   "henry": {
     "exp_n_isotherms": 1,
     "exp_n_dois": 1,
