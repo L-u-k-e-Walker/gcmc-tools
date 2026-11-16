@@ -109,8 +109,14 @@ def resolve_options(model, opts, parent, log=print):
             raise ValueError("requested unit cells violate the minimum-image rule")
     vf = opts.get("void_fraction", "auto")
     if vf == "auto":
+        # framework-only force field + probe-He, cached per structure: one value for every gas
+        fw = {**model["ff"],
+              "PseudoAtoms": [p for p in model["ff"]["PseudoAtoms"] if p["framework"]],
+              "SelfInteractions": [s for s in model["ff"]["SelfInteractions"]
+                                   if any(p["name"] == s["name"] and p["framework"] for p in model["ff"]["PseudoAtoms"])]}
         mean, half, vals = runner.helium_void_fraction(
-            parent, model["framework_name"], model["cif_text"], raspa.add_helium_probe(model["ff"]), log=log)
+            ROOT / "runs" / "_voidfraction" / model["framework_name"] / model["recipe"], model["framework_name"],
+            model["cif_text"], raspa.add_helium_probe(fw), log=log)
         opts["void_fraction"] = round(mean, 5)
         opts["void_fraction_detail"] = {"mean": mean, "half_range": half, "values": vals}
         log(f"helium void fraction: {mean:.5f} +/- {half:.5f} (raspa3-cli, {len(vals)} replicas)")
