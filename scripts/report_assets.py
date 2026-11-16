@@ -54,6 +54,38 @@ def table_comparisons(c):
     return "\n".join(lines)
 
 
+REASON_GROUPS = [("temperature", "temperature outside"), ("not experimental", "not experimental|category '"),
+                 ("ambiguous exp/sim", "ambiguous"), ("mixture / other gas", "multicomponent"),
+                 ("units", "unit:"), ("duplicate", "duplicate"), ("< 3 points", "fewer than")]
+
+
+def table_cleaning():
+    """Per case/gas/T: ISODB candidates, rejections by reason, accepted, sample-flagged, pristine, screened."""
+    clean_dir = ROOT / "data" / "isodb_clean"
+    flags = pd.read_csv(P5 / "plausibility_flags.csv") if (P5 / "plausibility_flags.csv").exists() else None
+    hdr = ["Case", "Gas", "T (K)", "candidates"] + [g for g, _ in REASON_GROUPS] + \
+          ["accepted", "sample-flagged", "pristine (papers)", "removed by screen", "used"]
+    lines = ["| " + " | ".join(hdr) + " |", "|" + "---|" * 3 + "---:|" * (len(hdr) - 3)]
+    tot = None
+    for case in ORDER:
+        for gas, T in PANELS:
+            lf = clean_dir / f"{case}_{gas}_{T:g}K_ledger.csv"
+            if not lf.exists():
+                continue
+            led = pd.read_csv(lf)
+            rej = led[led.status != "accepted"].reason.fillna("")
+            counts = [int(rej.str.contains(p, regex=True).sum()) for _, p in REASON_GROUPS]
+            acc = led[led.status == "accepted"]
+            pr = acc[acc.sample_flags.isna() | (acc.sample_flags == "")]
+            nflag = 0 if flags is None else int(((flags.case == case) & (flags.gas == gas) & (flags.T_K == T)).sum())
+            row = [len(led)] + counts + [len(acc), len(acc) - len(pr), len(pr), nflag, len(pr) - nflag]
+            tot = row if tot is None else [a + b for a, b in zip(tot, row)]
+            lines.append(f"| {case} | {gas} | {T:g} | " + " | ".join(
+                f"{v} ({pr.doi.nunique()})" if i == len(row) - 3 else str(v) for i, v in enumerate(row)) + " |")
+    lines.append("| **all** | | | " + " | ".join(f"**{v}**" for v in tot) + " |")
+    return "\n".join(lines)
+
+
 def overview_figure(c, out):
     c = c[c.scr_n_isotherms.fillna(0) > 0].copy()
     c["label"] = c.case + "  " + c.gas + " " + c.T_K.map(lambda t: f"{t:g} K")
@@ -138,6 +170,8 @@ def case_figure(case, label, out):
             if ll not in l:
                 h.append(hh)
                 l.append(ll)
+    order = ["exp. isotherm (screened)", "exp. interquartile range (papers)", "exp. consensus median", "GCMC excess"]
+    h, l = zip(*sorted(zip(h, l), key=lambda x: order.index(x[1]) if x[1] in order else 99))
     fig.legend(h, l, loc="lower center", ncol=4, frameon=False, fontsize=8, labelcolor=report.TEXT)
     fig.suptitle(f"{case}: simulation vs screened ISODB experiments", x=0.01, ha="left", color=report.TEXT,
                  fontsize=11)
@@ -155,7 +189,12 @@ def main():
              "Excess simulated uptake / per-paper experimental consensus median, median over grid points in each regime "
              "('unknown' basis treated as excess). (papers) = fewest papers behind any grid point in the regime. "
              "Screened = Gate-2 selection minus results/phase5/plausibility_flags.csv.\n",
-             table_comparisons(c)]
+             table_comparisons(c),
+             "\n## Data cleaning (ISODB candidates per case/gas/T)\n",
+             "A record can be a candidate for several targets (e.g. a 273 K isotherm is a temperature rejection "
+             "for the 298 K target). Sample-flagged = accepted but with a sample-state flag in the title "
+             "(shaped, aged/humid); these are shown but excluded from the consensus.\n",
+             table_cleaning()]
     for name, title in (("henry", "Henry coefficients (mmol/g/bar)"), ("ideal_gas", "Computed ideal-gas effect"),
                         ("plausibility_flags", "Records removed by the plausibility screen"),
                         ("sensitivity", "Sensitivity runs (variant / main, z-score)")):

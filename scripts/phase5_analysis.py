@@ -215,6 +215,16 @@ def main():
         row["sim_henry_mmol_g_bar"] = sim_meta.get("henry_widom_mmol_g_bar")
         row["sim_dH0_kj_mol"] = sim_meta.get("dH0_nvt1_kj_mol")
         row.update(basis_effect(sim_csv))
+        # independent check of the low-pressure GCMC points: q(P) vs Widom K_H * P at the lowest pressures
+        pts = pd.read_csv(sim_csv.with_name(sim_csv.stem + "_points.csv")).sort_values("P_bar")
+        kh = sim_meta.get("henry_widom_mmol_g_bar")
+        if kh:
+            for p in (0.01, 0.0215443469):
+                m = pts[(pts.P_bar - p).abs() < 1e-6]
+                if len(m):
+                    tag = f"{p:.3g}".replace(".", "p")
+                    row[f"gcmc_over_widom_{tag}bar"] = float(m.exc_mmol_g.iloc[0] / (kh * p * m.fugacity_coefficient.iloc[0]))
+                    row[f"gcmc_relerr_{tag}bar"] = float(m.rel_err.iloc[0])
         for r in ideal_gas_effect(sim_csv.with_name(sim_csv.stem + "_points.csv")):
             ideal.append({"case": case, "gas": gas, "T_K": T, **r})
         if not exp_csv.exists():
