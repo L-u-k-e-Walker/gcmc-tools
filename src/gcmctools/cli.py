@@ -70,6 +70,73 @@ def cmd_collect(a, argv):
     print(report.plot_isotherm(csv))
 
 
+CLEAN = ROOT / "data" / "isodb_clean"
+
+
+def cmd_isodb(a, argv):
+    import pandas as pd
+    from . import clean, isodb
+    cases = workflow.load_cases()
+    c = cases["cases"][a.case]
+    hashkeys = c["isodb_hashkeys"]
+    log = _log_to(CLEAN / "isodb.log")
+    log(f"gcmc isodb {' '.join(argv)}")
+    for m in isodb.registry_matches(c["aliases"], hashkeys + c.get("isodb_hashkeys_conditional", [])):
+        log(f"registry match: {m['hashkey']} '{m['name']}' via {m['matched']} in_cases_yaml={m['in_cases_yaml']}")
+    if c.get("isodb_hashkeys_conditional"):
+        log(f"conditional hashkeys NOT used automatically: {c['isodb_hashkeys_conditional']} ({c.get('aliases_note', '')})")
+    commit, papers, records = isodb.fetch(a.case, a.gas, hashkeys, log=log)
+    temps = a.T or cases["defaults"]["temperatures_K"][a.gas]
+    window = a.T_window if a.T_window is not None else cases["defaults"]["isodb_T_window_K"]
+    for T in temps:
+        ledger, tidy = clean.clean_case(a.case, a.gas, T, window, hashkeys, records, papers)
+        ledger.insert(0, "target_T_K", T)
+        ledger.insert(0, "case", a.case)
+        ledger.insert(2, "gas", a.gas)
+        acc = ledger[ledger.status == "accepted"]
+        pristine_ids = set(acc[acc.sample_flags.isna() | (acc.sample_flags == "")].filename)
+        if len(pristine_ids):
+            cons, mat = clean.consensus(tidy[tidy.source_id.isin(pristine_ids)])
+            score, out, _ = clean.flag_outliers(mat, cons)
+            ledger["outlier_score_log10"] = ledger.filename.map(score)
+            ledger["outlier"] = ledger.filename.map(out).fillna(False).astype(bool)
+        csv = clean.write_outputs(a.case, a.gas, T, ledger, tidy, commit, CLEAN,
+                                  {"T_window_K": window, "hashkeys": hashkeys,
+                                   "n_candidate_papers": len(papers)})
+        log(f"T={T:g} K: {len(ledger)} candidates, {len(acc)} accepted "
+            f"({len(pristine_ids)} pristine, {len(acc) - len(pristine_ids)} flagged) -> {csv.relative_to(ROOT)}")
+        for reason, n in ledger[ledger.status == "rejected"].reason.str.replace(r" of .*", " of ...", regex=True) \
+                .value_counts().items():
+            log(f"    rejected {n:4d}  {reason}")
+    parts = [pd.read_csv(f) for f in sorted(CLEAN.glob("*_ledger.csv"))]
+    pd.concat(parts, ignore_index=True).to_csv(CLEAN / "ledger.csv", index=False)
+    log(f"combined ledger: {CLEAN / 'ledger.csv'}")
+
+
+def cmd_compare(a, argv):
+    import pandas as pd
+    from . import clean, compare
+    stem_exp = f"{a.case}_{a.gas}_{a.T:g}K"
+    exp_lo = None
+    if a.T_second is not None:
+        e2 = CLEAN / f"{a.case}_{a.gas}_{a.T_second:g}K"
+        led2 = pd.read_csv(f"{e2}_ledger.csv")
+        acc2 = led2[led2.status == "accepted"]
+        ids2 = set(acc2[acc2.sample_flags.isna() | (acc2.sample_flags == "")].filename)
+        t2 = pd.read_csv(f"{e2}.csv")
+        exp_lo = (t2[t2.source_id.isin(ids2)], a.T_second)
+    res = compare.compare(a.sim, CLEAN / f"{stem_exp}.csv", CLEAN / f"{stem_exp}_ledger.csv", exp_lo=exp_lo)
+    sim_label = Path(a.sim).stem
+    out = ROOT / "results" / a.case / "compare"
+    stem = f"{sim_label}_vs_isodb"
+    compare.write(res, out, stem, a.sim)
+    png = compare.plot_compare(res, a.sim, f"{a.gas} in {a.case}, {a.T:g} K: simulation ({sim_label}) vs ISODB",
+                               out / f"{stem}.png")
+    print(res["regimes"].round(3).to_string(index=False))
+    print(json.dumps(res["henry"], indent=1, default=float)[:800])
+    print(png)
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     ap = argparse.ArgumentParser(prog="gcmc")
@@ -96,8 +163,20 @@ def main(argv=None):
     s.add_argument("--detach", action="store_true", help="run in a detached tmux session")
     c = sub.add_parser("collect", help="(re)write results for an isotherm run folder")
     c.add_argument("isotherm_dir")
+    i = sub.add_parser("isodb", help="fetch and clean ISODB isotherms for a case")
+    i.add_argument("--case", required=True)
+    i.add_argument("--gas", required=True, choices=["CO2", "CH4", "N2"])
+    i.add_argument("--T", type=float, nargs="+", help="target temperatures (K); default from cases.yaml")
+    i.add_argument("--T-window", type=float, help="K; default from cases.yaml (2 K)")
+    k = sub.add_parser("compare", help="compare a simulated isotherm CSV with the cleaned ISODB data")
+    k.add_argument("--case", required=True)
+    k.add_argument("--gas", required=True, choices=["CO2", "CH4", "N2"])
+    k.add_argument("--T", type=float, required=True)
+    k.add_argument("--sim", required=True, help="results/<case>/<gas>_<T>K_<label>.csv")
+    k.add_argument("--T-second", type=float, help="second experimental temperature for Clausius-Clapeyron")
     a = ap.parse_args(argv)
-    {"isotherm": cmd_isotherm, "collect": cmd_collect}[a.cmd](a, argv[1:])
+    {"isotherm": cmd_isotherm, "collect": cmd_collect, "isodb": cmd_isodb,
+     "compare": cmd_compare}[a.cmd](a, argv[1:])
 
 
 if __name__ == "__main__":

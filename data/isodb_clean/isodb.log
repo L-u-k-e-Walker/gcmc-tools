@@ -1,0 +1,53 @@
+2026-11-15 19:14:05 gcmc isodb --case HKUST-1 --gas CO2
+2026-11-15 19:14:05 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 19:14:05 ISODB mirror 9e1ee4729: 99 candidate papers for HKUST-1 + CO2
+2026-11-15 19:14:06 220 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 19:14:43 gcmc isodb --case HKUST-1 --gas CO2
+2026-11-15 19:14:43 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 19:14:43 ISODB mirror 9e1ee4729: 99 candidate papers for HKUST-1 + CO2
+2026-11-15 19:15:03 gcmc isodb --case HKUST-1 --gas CO2
+2026-11-15 19:15:03 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 19:15:04 ISODB mirror 9e1ee4729: 99 candidate papers for HKUST-1 + CO2 (18 list no isotherms)
+2026-11-15 19:15:04 256 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 19:15:04 T=298 K: 256 candidates, 51 accepted (50 pristine, 1 flagged) -> data/isodb_clean/HKUST-1_CO2_298K.csv
+2026-11-15 19:15:04     rejected  118  temperature outside 298 +/- 2 K
+2026-11-15 19:15:04     rejected   33  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 19:15:04     rejected   17  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 19:15:04     rejected   10  multicomponent or different adsorbate
+2026-11-15 19:15:04     rejected    8  category 'sim' (isotherm)
+2026-11-15 19:15:04     rejected    8  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 19:15:04     rejected    4  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 19:15:04     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 19:15:04     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 19:15:04     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 19:15:04     rejected    1  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 19:15:04 T=273 K: 256 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/HKUST-1_CO2_273K.csv
+2026-11-15 19:15:04     rejected  239  temperature outside 273 +/- 2 K
+2026-11-15 19:15:04     rejected   10  multicomponent or different adsorbate
+2026-11-15 19:15:04     rejected    2  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 19:15:04     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 19:15:04     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 19:15:04 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv
+2026-11-15 19:18:16 gcmc isodb --case HKUST-1 --gas CO2
+2026-11-15 19:18:16 registry match: NIST-MATDB-991daf7313251e7e607e2bab2da57e33 'CuBTC' via ['CuBTC', 'Basolite C300', 'Cu-BTC', 'Cu3(BTC)2', 'HKUST-1', 'MOF-199'] in_cases_yaml=True
+2026-11-15 19:18:16 ISODB mirror 9e1ee4729: 99 candidate papers for HKUST-1 + CO2 (18 list no isotherms)
+2026-11-15 19:18:16 256 candidate isotherm records cached in data/isodb_raw/records
+2026-11-15 19:18:16 T=298 K: 256 candidates, 51 accepted (50 pristine, 1 flagged) -> data/isodb_clean/HKUST-1_CO2_298K.csv
+2026-11-15 19:18:16     rejected  118  temperature outside 298 +/- 2 K
+2026-11-15 19:18:16     rejected   33  not experimental (paper categories sim, isotherm unlabeled)
+2026-11-15 19:18:16     rejected   17  not experimental (paper categories qua+sim, isotherm unlabeled)
+2026-11-15 19:18:16     rejected   10  multicomponent or different adsorbate
+2026-11-15 19:18:16     rejected    8  category 'sim' (isotherm)
+2026-11-15 19:18:16     rejected    8  ambiguous exp/non-exp (paper categories exp+sim, isotherm unlabeled)
+2026-11-15 19:18:16     rejected    4  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 19:18:16     rejected    3  not experimental (paper categories mod+sim, isotherm unlabeled)
+2026-11-15 19:18:16     rejected    2  ambiguous exp/non-exp (paper categories exp+mod+sim, isotherm unlabeled)
+2026-11-15 19:18:16     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 19:18:16     rejected    1  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 19:18:16 T=273 K: 256 candidates, 3 accepted (3 pristine, 0 flagged) -> data/isodb_clean/HKUST-1_CO2_273K.csv
+2026-11-15 19:18:16     rejected  239  temperature outside 273 +/- 2 K
+2026-11-15 19:18:16     rejected   10  multicomponent or different adsorbate
+2026-11-15 19:18:16     rejected    2  unit: loading unit not on allowlist: 'kg/mol'
+2026-11-15 19:18:16     rejected    1  ambiguous exp/non-exp (paper categories exp+mod, isotherm unlabeled)
+2026-11-15 19:18:16     rejected    1  unit: loading unit not on allowlist: 'mol/mol'
+2026-11-15 19:18:16 combined ledger: /home/lukew/projects/gcmc-tools/data/isodb_clean/ledger.csv

@@ -56,3 +56,29 @@ Observations for Phase 3:
 - Drift flag (2σ, halves of the production series) fired on 1/16 points (old, 2 bar), consistent
   with the expected false-positive rate of about 5%.
 - Wall time per point (8 concurrent): 2 min (0.01 bar) to 19 min (5 bar) for 25k cycles, 624 atoms.
+
+## 2026-11-15: Phase 2, Tool 2 on HKUST-1 CO2
+Did:
+- isodb.py (mirror at 9e1ee47, sparse checkout), clean.py (rules, ledger, consensus, outliers, Henry,
+  Clausius–Clapeyron), compare.py, CLI `gcmc isodb` and `gcmc compare`. 80 tests pass.
+- Ran: `bin/gcmc isodb --case HKUST-1 --gas CO2` (298 and 273 K) and
+  `bin/gcmc compare --case HKUST-1 --gas CO2 --T 298 --T-second 273 --sim results/HKUST-1/CO2_298K_regression_corrected.csv`.
+Bugs found and fixed on the way:
+- Mirror folder names are lower-cased bibliography file stems, not "DOI without slash" (12 of 99
+  HKUST-1/CO2 papers differ, e.g. 10.1007/s10450-015-9684-6 → 10.1007s1045001596846). With the fix:
+  256 candidates, matching the Phase 0 survey (246 single-component + 10 mixtures). Papers that list
+  no isotherms (18) have no folder and are skipped.
+- A (0, 0) origin point was counted as a digitizer artifact (P == q). Now P ≤ 0 is dropped first.
+- The first Clausius–Clapeyron attempt mixed the 273 K papers with the 298 K consensus of other
+  papers and gave a physically impossible −72 kJ/mol. It is now computed per paper (same sample),
+  only when a paper has exactly one isotherm at each temperature.
+- Log–log interpolation in Clausius–Clapeyron (exact for Henry-law segments; the old version was off by 0.1%).
+Decisions:
+- The sample-flag rule (excluding only name flags and sample-state title words) is documented in
+  clean.py. A record on the pristine hashkey inside a composite paper is that paper's reference sample.
+- No API calls were needed beyond Phase 0. The mirror equals the API (Phase 0 check).
+Open:
+- 15 of the 50 pristine 298 K isotherms come from one paper (10.1021/La102359q, CO2/H2O on HKUST-1).
+  Two of them are outliers at about 0.1 mmol/g at 1 bar, which may be water-preloaded samples. The records do not say.
+- 10.1007/s10973-013-3497-1 ("Hydrogen production from bio-oil by chemical looping reforming") is
+  filed under CuBTC in ISODB. The title does not fit and its isotherms are outliers. Possibly a misattributed DOI.
