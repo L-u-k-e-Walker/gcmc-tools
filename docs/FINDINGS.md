@@ -16,8 +16,9 @@ Each finding lists its evidence. Method-level facts are in RECON.md.
 - F1.2 Gas non-ideality and the helium void fraction together change the excess loading by
   about −1.5% at 5 bar (fugacity −0.25 mmol/g, void fraction +0.06 mmol/g) and < 0.5% at ≤ 2 bar.
   These are computed from the deterministic terms and are not resolvable in the 20k-cycle runs (measured changes
-  within ±0.5 SE). For 0.01–10 bar at 298 K, neither correction can explain sim-vs-exp differences larger than a few
-  percent for CO2 in HKUST-1. Evidence: results/HKUST-1/regression_corrected_vs_old.csv.
+  within ±0.5 SE). At 298 K, neither correction can explain sim-vs-exp differences larger than a few
+  percent for CO2 in HKUST-1 up to 5 bar (10 bar not yet measured; φ ≈ 0.95 there). Evidence:
+  results/HKUST-1/regression_corrected_vs_old.csv.
 - F1.3 Zero-loading ΔH for CO2 in this model is −25.4 kJ/mol from two independent routes (1-molecule
   NVT −25.42 ± 0.31; GCMC fluctuation at 0.01 bar −25.45 ± 0.23). Evidence:
   results/HKUST-1/CO2_298K_regression_corrected.json, ..._points.csv.
